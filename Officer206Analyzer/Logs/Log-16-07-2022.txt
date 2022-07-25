@@ -1,0 +1,7 @@
+7/16/2022 10:46:57 AM admin3 user has search for the Initiating Officer details with official number 3144 and completed in 0 ms
+7/16/2022 10:47:33 AM admin3 user has search for the Initiating Officer details with official number 212 and completed in 0 ms
+7/16/2022 10:47:44 AM admin3 user has search for the Reporting Officer details with official number 212 and completed in 0 ms
+7/16/2022 10:51:00 AM admin3 user has search for the Initiating Officer details with official number 212 and completed in 0 ms
+7/16/2022 10:51:09 AM admin3 user has search for the Reporting Officer details with official number 212 and completed in 0 ms
+7/16/2022 10:51:32 AM admin3 user has search for the 206 data of official number 3144 and completed in 2313 ms
+7/16/2022 10:52:01 AM admin3 user has search for the 206 data of official number 585 and completed in 832 ms

@@ -58,6 +58,7 @@ namespace Officer206Analyzer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtoffnoMain;
+        protected global::System.Web.UI.WebControls.TextBox txtremarks;
         
         /// <summary>
         /// Label58 control.

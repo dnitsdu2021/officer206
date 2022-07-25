@@ -383,6 +383,7 @@ namespace Officer206Analyzer
 
                     cmd.Parameters.Add("@DutyType", SqlDbType.VarChar).Value = ddlDutyType.SelectedItem.Text.ToString();
                     cmd.Parameters.Add("@TotalMark", SqlDbType.VarChar).Value = obj.Encrypt(txtMarks.Text.ToString());
+                    cmd.Parameters.Add("@remarks", SqlDbType.VarChar).Value = (txtremarks.Text.ToString());
 
                     if (CheckBox1.Checked == false)
                     {
@@ -527,7 +528,7 @@ namespace Officer206Analyzer
                     
                     
                     }
-                    cmd.Parameters.Add("@createby", SqlDbType.VarChar).Value = "Sam";
+                    cmd.Parameters.Add("@createby", SqlDbType.VarChar).Value = Session["nic"].ToString();
 
 
                     if (flpInt.HasFile && flpRep.HasFile)

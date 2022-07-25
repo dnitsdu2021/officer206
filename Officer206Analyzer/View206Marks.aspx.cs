@@ -455,7 +455,7 @@ namespace Officer206Analyzer
                     cmd.Parameters.Add("@TotalCO", SqlDbType.VarChar).Value = obj.Encrypt(int.Parse(txtOrganisingAbility.Text.ToString()) + int.Parse(txtForesight.Text.ToString()) + int.Parse(txtCooperation.Text.ToString()) + int.Parse(txtPowerOfExpression.Text.ToString()).ToString());
 
 
-                    cmd.Parameters.Add("@createby", SqlDbType.VarChar).Value = "Sam";
+                    cmd.Parameters.Add("@createby", SqlDbType.VarChar).Value = Session["nic"].ToString();
 
 
                     if (flpInt.HasFile && flpRep.HasFile)

@@ -7,11 +7,11 @@
     <title></title>
 
 
-    <script>
+    <Script>
 
         {"valid":<%=Session["nic"] != null ? "true" : "false" %>}
 
-    </script>
+    </Script>
 </head>
 <body>
     <form id="form1" runat="server">

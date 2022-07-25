@@ -16,7 +16,7 @@ namespace Officer206Analyzer
 {
     public partial class Login : System.Web.UI.Page
     {
-        string constr = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+        string constr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
 
 

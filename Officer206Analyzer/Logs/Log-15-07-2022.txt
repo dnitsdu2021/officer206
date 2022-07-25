@@ -1,0 +1,29 @@
+7/15/2022 8:49:12 AM admin3 user has search details for  officer and completed in 0 ms
+7/15/2022 8:50:16 AM admin3 user has search for the Initiating Officer details with official number 2424 and completed in 0 ms
+7/15/2022 8:50:26 AM admin3 user has search for the Reporting Officer details with official number 2424 and completed in 0 ms
+7/15/2022 8:50:54 AM admin3 user has search for the 206 data of official number 3144 and completed in 0 ms
+7/15/2022 8:51:37 AM admin3 user has updatede 206 data of official numbers 3144 and completed in 0 ms
+7/15/2022 8:51:39 AM admin3 user has search for the 206 data of official number 3144 and completed in 0 ms
+7/15/2022 8:52:41 AM admin3 user has updatede 206 data of official numbers 3144 and completed in 641 ms
+7/15/2022 8:53:15 AM admin3 user has search for the 206 data of official number 3144 and completed in 0 ms
+7/15/2022 8:53:33 AM admin3 user has search for the 206 data of official number 3144 and completed in 0 ms
+7/15/2022 8:54:00 AM admin3 user has updatede 206 data of official numbers 3144 and completed in 0 ms
+7/15/2022 8:54:12 AM admin3 user has search for the 206 data of official number 3144 and completed in 1154 ms
+7/15/2022 8:54:40 AM admin3 user has search for the 206 data of official number 3144 and completed in 0 ms
+7/15/2022 8:55:06 AM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/15/2022 9:00:09 AM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/15/2022 9:01:52 AM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/15/2022 9:04:34 AM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/15/2022 9:05:18 AM admin3 user has search for the 206 data of official number 3144 and completed in 0 ms
+7/15/2022 9:23:13 AM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/15/2022 9:23:59 AM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/15/2022 9:27:49 AM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/15/2022 9:31:03 AM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/15/2022 9:44:09 AM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/15/2022 9:44:53 AM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/15/2022 9:49:19 AM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/15/2022 9:49:41 AM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/15/2022 9:51:05 AM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/15/2022 9:54:59 AM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/15/2022 4:30:58 PM admin3 user has search 206 details for 2427 officer and completed in 0 ms
+7/15/2022 4:34:37 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms

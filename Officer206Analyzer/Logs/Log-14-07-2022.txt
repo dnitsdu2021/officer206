@@ -1,0 +1,26 @@
+7/14/2022 3:23:36 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 3:30:06 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 3:34:39 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 3:36:45 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 3:42:58 PM admin3 user has search 206 details for 3144 officer and completed in 1 ms
+7/14/2022 3:49:07 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 3:50:45 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 3:52:03 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 4:09:02 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 4:17:17 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 4:25:22 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 4:35:38 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 4:40:29 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 4:46:05 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 4:51:21 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 4:52:47 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 5:07:08 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 5:10:52 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 5:27:15 PM admin3 user has search 206 details for 3144 officer and completed in 0 ms
+7/14/2022 5:27:54 PM admin3 user has search details for  officer and completed in 0 ms
+7/14/2022 5:29:03 PM admin3 user has search for the Initiating Officer details with official number 2424 and completed in 0 ms
+7/14/2022 5:29:15 PM admin3 user has search for the Reporting Officer details with official number 2424 and completed in 0 ms
+7/14/2022 5:32:28 PM admin3 user has search details for  officer and completed in 0 ms
+7/14/2022 5:33:36 PM admin3 user has search for the Initiating Officer details with official number 2424 and completed in 0 ms
+7/14/2022 5:34:09 PM admin3 user has search for the Initiating Officer details with official number 2424 and completed in 0 ms
+7/14/2022 5:34:16 PM admin3 user has search for the Initiating Officer details with official number 2424 and completed in 0 ms
