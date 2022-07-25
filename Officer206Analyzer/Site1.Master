@@ -1,0 +1,153 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Officer206Analyzer.Site1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--
+Template 2023 Mini Blue
+http://www.tooplate.com/view/2023-mini-blue
+-->
+<title>Officer 206 Marks Analyzer</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="css/tooplate_style.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery.lightbox-0.5.css" rel="stylesheet" type="text/css" media="screen" /> 
+<script type='text/javascript' src='js/jquery.min.js'></script>
+<script type='text/javascript' src='js/jquery.scrollTo-min.js'></script>
+<script type='text/javascript' src='js/jquery.localscroll-min.js'></script>
+<script type="text/javascript" src="js/jquery.lightbox-0.5.js"></script> 
+ 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.localScroll();
+        $('#map a').lightBox();
+    });
+</script>
+
+    <style type="text/css">
+
+ p.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:8.0pt;
+	margin-left:0in;
+	line-height:107%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+    </style>
+
+</head>
+<body>
+
+<div id="tooplate_wrapper"><div id="top"></div>
+
+	<div id="templatmeo_header">
+    	
+        
+        
+        <div id="site_title">
+			
+        </div>
+        <h1 style="color: #EBEBEB" ><a href="#"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OFFICER&#39;S NAV 206 ANALYZER </h1> 
+
+        <div id="tooplate_menu">
+
+            <span id="nav">
+   <ul>
+       <li><a href="WebForm1.aspx">Home</a></li>
+        <li><a href="#">Analyze</a>
+              <ul>
+                 <%-- <li><a href="#">View 206</a></li>--%>
+                  
+                            <li><a href="View206.aspx">Analyze Officer  </a></li>
+                            <%--<li><a href="Ananyzer.aspx">Analyze Officer2   </a></li>--%>
+                            <li><a href="AnalyzerIndividually.aspx">Multiple Analyzer</a></li>
+                           <%-- <li><a href="#about">Ini-Officer Analyzer</a></li>
+                            <li><a href="#news">Rep-Officer Analyzer</a></li>--%>
+                  
+             </ul>
+             </li>
+
+        <li><a href="#">Edit/Save</a>
+              
+             <ul>
+                 <%-- <li><a href="#">View 206</a></li>--%>
+                 
+                              <li><a href="Insert206.aspx">Insert NAV 206</a></li>
+                              <li><a href="#news">Edit NAV 206</a></li>
+                              
+                              
+                      
+             </ul>
+        </li>
+        <li><a href="#">Reports</a></li>
+        <li><a href="WebForm1.aspx">Logout</a></li>           
+     </ul>                                                           
+</span>
+
+           <%-- <ul>
+                 <li><a href="#home">Home</a></li>
+                 <li class="current">
+                            <a href="#a" id="idNO" runat="server">206 Marks</a>
+                            <ul>
+                                 <li><a href="#about">View 206</a></li>
+                                 <li><a href="#news">Insert 206</a></li>
+                                 <li><a href="#news">Edit 206</a></li>
+                            </ul>
+                        </li>
+
+              
+
+                  <li class="current">
+                            <a href="#a" id="A1" runat="server">Analyze</a>
+                            <ul>
+                                 <li><a href="#about">Initiating Officer</a></li>
+                               <li><a href="#news">Reporting Officer</a></li>
+                            </ul>
+                        </li>
+                 <li><a href="#home">Reports</a></li>
+                 <li><a href="#home">Logout</a></li>
+               
+                <li class="last"><a href="#contact">Contact</a></li>
+            </ul>    	--%>
+        </div> <!-- end of tooplate_menu -->
+        
+    </div>
+    
+    <div id="tooplate_main">
+    	
+        <div id="home"></div>
+        <div class="content_box">
+            <h2 style="font-size: 25px">Welcome to Officer&#39;s NAV 206 Analyzer</h2>
+            <div class="col_w340 float_l">
+                &nbsp;<img class="image_wrapper" src="images/206.jpg" alt="Image 01" align="middle" /></div>
+			
+            <div class="cleaner h30" style="font-size: 15px">
+                <p class="MsoNormal" style="font-size: 23px; color: #FFFFFF;" align="left">
+                    This system is working as tool to restore officer’s 206 data and analyses same for decision&nbsp; making.&nbsp; Further&nbsp; this system also&nbsp; gives pen&nbsp; picture&nbsp; appraisal of Initiating<span style="mso-spacerun:yes">&nbsp;&nbsp; </span>and&nbsp;&nbsp; Reporting&nbsp; officers.&nbsp; Moreover,&nbsp; this&nbsp; system&nbsp; provides&nbsp; various reports on demand of system&nbsp; users and has security levels to access the&nbsp; data&nbsp;&nbsp; in the system.<o:p></o:p></p>
+            </div>
+			
+          
+			
+        </div> <!-- end of a content box -->
+        
+       
+                
+                </div> 
+            
+            
+        
+            
+         
+    
+    <div id="tooplate_footer">
+        Copyright © 2022 <a href="#">Director of Information Technology Department</a> 
+        
+        <!-- | <a href="http://www.tooplate.com/view/2023-mini-blue">Mini Blue</a> by <a rel="nofollow" href="http://www.tooplate.com">Templates</a> -->
+    </div> <!-- end of tooplate_footer -->
+
+</div> <!-- end of wrapper -->
+</body>
+</html>

@@ -1,0 +1,112 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="NewSiteMaster.master.cs" Inherits="Officer206Analyzer.NewSiteMaster" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
+<!doctype html>
+<html lang="en">
+<head runat="server">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="Bootstrap5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+    </asp:ContentPlaceHolder>
+
+<script>
+    function checkSession() {
+        var request = false;
+
+        if (window.XMLHttpRequest) { // Mozilla/Safari
+            request = new XMLHttpRequest();
+        } else if (window.ActiveXObject) { // IE
+            request = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        request.open('POST', 'SessionCheck.aspx', true);
+        request.onreadystatechange = function () {
+            if (request.readyState == 4) {
+                var session = eval('(' + request.responseText + ')');
+                if (session.valid) {
+                    // DO SOMETHING IF SESSION IS VALID
+                } else {
+                    alert("Your Session has expired");
+                    window.location = "Login.aspx";
+                }
+            }
+        }
+        request.send(null);
+    }
+</script>
+
+</head>
+<body>
+    
+
+
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="/Home.aspx" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32">
+                    <use xlink:href="#bootstrap" />
+                </svg>
+                <span class="fs-4">OFFICER'S NAV 206 ANALYZER</span>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="home.aspx" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="A1" data-bs-toggle="dropdown" aria-expanded="false">Edit/Save</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown05">
+                        <%--<li><a class="dropdown-item" href="View206.aspx">View NAV 206</a></li>--%>
+                        <li><a class="dropdown-item" href="Insert206.aspx">Insert NAV 206</a></li>
+                        <li><a class="dropdown-item" href="update206Marks.aspx">Edit Nav206</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="A2" data-bs-toggle="dropdown" aria-expanded="false">Analyze</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown05">
+                        <li><a class="dropdown-item" href="View206.aspx">Individual  Analyzer </a></li>
+                        <li><a class="dropdown-item" href="AnalyzerIndividually.aspx">Multiple  Analyzer </a></li>
+                      <%--  <li><a class="dropdown-item" href="#about">Initiating Officer</a></li>
+                        <li><a class="dropdown-item" href="#news">Reporting Officer</a></li>--%>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Reports</a>
+<%--                    <ul class="dropdown-menu" aria-labelledby="dropdown05">
+                        <li><a class="dropdown-item" href="Nav206Report.aspx">Average Marks of Selected Officers</a></li>
+                    </ul>--%>
+                </li>
+                <li class="nav-item"><a href="Login.aspx" class="nav-link">Logout</a></li>
+
+            </ul>
+        </header>
+        <main>
+            
+            <form id="form1" runat="server">
+
+
+
+                <telerik:RadScriptManager ID="RadScriptManager1" Runat="server">
+                </telerik:RadScriptManager>
+                <div>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </form>
+        </main>
+        <footer>
+            <!-- Copyright -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2021 Copyright:
+                <a class="text-reset fw-bold" href="https://dnit.navy.lk/">Director of Information Technology Department</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+    </div>
+
+    <script src="Bootstrap5/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
