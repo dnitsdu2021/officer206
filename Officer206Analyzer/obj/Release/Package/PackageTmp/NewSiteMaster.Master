@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="NewSiteMaster.master.cs" Inherits="Officer206Analyzer.NewSiteMaster" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <!doctype html>
@@ -15,34 +15,60 @@
     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
     </asp:ContentPlaceHolder>
 
-<script>
-    function checkSession() {
-        var request = false;
+        <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <link href="css/jquery-ui.css" rel="stylesheet" />
+        <script type="text/javascript">
+            var divObj = $('#' + dialog);
+            divObj.dialog('destroy');
+            $(function () {
+                divObj.dialog({
+                    autoOpen: false,
+                    modal: true,
+                    title: "Session Expiring",
+                    buttons: {
+                        Ok: function () {
+                            ResetSession();
+                        },
+                        Close: function () {
+                            $(this).dialog('close');
+                        }
+                    }
+                });
+            });
+            function SessionExpireAlert(timeout) {
+                var seconds = timeout / 1000;
+                $("#secondsIdle").html(seconds);
+                $("#seconds").html(seconds);
+                setInterval(function () {
+                    seconds--;
+                    $("#secondsIdle").html(seconds);
+                    $("#seconds").html(seconds);
+                }, 1000);
+                setTimeout(function () {
+                    //Show Popup before 180 seconds of timeout.
+                    //$('#dialog').dialog('open');
+                    divObj.dialog('open');
+                //}, timeout );
+            }, timeout - 30 * 1000);
+                setTimeout(function () {
+                    window.location = "/Login.aspx";
+                }, timeout);
+            };
+            function ResetSession() {
+                //Redirect to refresh Session.
+                window.location = window.location.href;
+            };
+    </script>
 
-        if (window.XMLHttpRequest) { // Mozilla/Safari
-            request = new XMLHttpRequest();
-        } else if (window.ActiveXObject) { // IE
-            request = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        request.open('POST', 'SessionCheck.aspx', true);
-        request.onreadystatechange = function () {
-            if (request.readyState == 4) {
-                var session = eval('(' + request.responseText + ')');
-                if (session.valid) {
-                    // DO SOMETHING IF SESSION IS VALID
-                } else {
-                    alert("Your Session has expired");
-                    window.location = "Login.aspx";
-                }
-            }
-        }
-        request.send(null);
-    }
-</script>
 
 </head>
 <body>
     
+
+
+
+
 
 
     <div class="container">
@@ -73,8 +99,11 @@
                         <li><a class="dropdown-item" href="#news">Reporting Officer</a></li>--%>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Reports</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="A2" data-bs-toggle="dropdown" aria-expanded="false">Reports</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown05">
+                    
+                    <li><a class="dropdown-item"  href="AccessLogReport.aspx">Access Log</a></li>
 <%--                    <ul class="dropdown-menu" aria-labelledby="dropdown05">
                         <li><a class="dropdown-item" href="Nav206Report.aspx">Average Marks of Selected Officers</a></li>
                     </ul>--%>
@@ -106,7 +135,12 @@
             <!-- Copyright -->
         </footer>
     </div>
-
+<%--    <h4>
+        Session Idle: <span id="secondsIdle"></span> seconds.</h4>--%>
+<%--        <div id="dialog" >
+        Your Session will expire in <span id="seconds"></span> seconds.<br />
+        Do you want to reset?
+    </div>--%>
     <script src="Bootstrap5/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

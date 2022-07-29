@@ -16,7 +16,7 @@ namespace Officer206Analyzer
 {
     public partial class Login : System.Web.UI.Page
     {
-        string constr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        string constr = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
 
 
@@ -106,7 +106,7 @@ namespace Officer206Analyzer
                 Session["NameWithInitials"] = dtlogindetails.Rows[0]["NameWithInitials"].ToString();
                 Session["email"] = dtlogindetails.Rows[0]["Email"].ToString();
                 Session["UserRole"] = dtlogindetails.Rows[0]["UserRole"].ToString();
-               
+                Session["Reset"] = false;
                 string sess = Session["nic"] as string;
                 nicNo = dtlogindetails.Rows[0]["Nic"].ToString();
                 saveOTP(numberAsString, nicNo);
