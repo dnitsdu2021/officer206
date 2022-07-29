@@ -39,7 +39,7 @@ namespace Officer206Analyzer
                 if (txtOTP.Text == checkedOTP)
                 {
 
-
+                    Session["Reset"] = false;
                     Response.Redirect("Home.aspx");
 
 

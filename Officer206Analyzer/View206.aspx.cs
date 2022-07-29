@@ -340,13 +340,7 @@ namespace Officer206Analyzer
             stripLine7.BackGradientStyle = GradientStyle.None;
             Chart1.ChartAreas[0].AxisY.StripLines.Add(stripLine7);
 
-            StripLine stripLine8 = new StripLine();
-            stripLine8.StripWidth = 10;
-            stripLine8.Interval = 10;
-            stripLine8.IntervalOffset = 70;
-            stripLine8.BackColor = Color.FromArgb(255, Color.DarkGreen);
-            stripLine8.BackGradientStyle = GradientStyle.None;
-            Chart1.ChartAreas[0].AxisY.StripLines.Add(stripLine8);
+
 
 
             //stripLine1.BackColor = Color.FromArgb(128, 255, 255, 255);
@@ -371,113 +365,7 @@ namespace Officer206Analyzer
             CreateChart3();
         }
 
-        private void CreateChart7()
-        {
-            MainDetailsNewAbility.Tables.Clear();
 
-            MainDetailsNewAbility.Clear();
-            {
-                try
-                {
-                    SqlDataAdapter sqlda = new SqlDataAdapter();
-
-
-                    string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString();
-                    SqlConnection con = new SqlConnection(ConnectionString);
-                    SqlCommand cmd = new SqlCommand();
-                    con.Open();
-                    cmd.Parameters.Clear();
-                    cmd = new SqlCommand("HRIS_Officer206Analyzer_GetHrisDataViewNewAbility", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-
-                    cmd.Parameters.Add("@OfficialNumber", SqlDbType.Int).Value = int.Parse(txtoffno.Text);
-                    cmd.Parameters.Add("@ServiceType", SqlDbType.VarChar, 5).Value = ddlst.SelectedValue.ToString();
-
-
-
-
-                    cmd.ExecuteNonQuery();
-                    sqlda.SelectCommand = cmd;
-                    sqlda.Fill(MainDetailsNewAbility);
-
-                    DataTable dt2 = GetData2(MainDetailsNewAbility.Tables[0]);
-                    GridView2.DataSource = dt2;
-                    GridView2.DataBind();
-
-                    DataTable dtRate = new DataTable("dtRate");
-                    foreach (TableCell cell in GridView2.HeaderRow.Cells)
-                    {
-                        dtRate.Columns.Add(cell.Text.Trim());
-                    }
-                    foreach (GridViewRow row in GridView2.Rows)
-                    {
-                        dtRate.Rows.Add();
-                        for (int i = 0; i < row.Cells.Count; i++)
-                        {
-                            dtRate.Rows[row.RowIndex][i] = row.Cells[i].Text.Trim();
-                        }
-                    }
-
-
-                    List<string> countries = (from p in dtRate.AsEnumerable()
-                                              select p.Field<string>("Attribute")).Distinct().ToList();
-                    if (Chart7.Series.Count() > 0)
-                    {
-                        Chart7.Series.Clear();
-                    }
-                    //Chart4.Series.Remove(Chart4.Series[0]);
-                    foreach (string country in countries)
-                    {
-                        string[] x = (from p in dtRate.AsEnumerable()
-                                      where p.Field<string>("Attribute") == country
-                                      orderby p.Field<string>("Year")
-                                      select (p.Field<string>("Year"))).ToArray();
-
-                        decimal[] y = (from p in dtRate.AsEnumerable()
-                                       where p.Field<string>("Attribute") == country
-                                       orderby p.Field<string>("Year")
-                                       select Convert.ToDecimal(p.Field<string>("Nav206Marks"))).ToArray();
-
-                        // var date = x.Select(strDate => DateTime.Parse(strDate)).ToArray();
-
-                        var date = x.Select(strDate => (strDate)).ToArray();
-
-                        Chart7.Series.Add(new Series(country));
-                        //Chart4.Series[country].IsValueShownAsLabel = true;
-                        Chart7.Series[country].BorderWidth = 2;
-                        Chart7.Series[country].ChartType = SeriesChartType.Line;
-                        Chart7.Series[country].Points.DataBindXY(date, y);
-                        Chart7.Series[country].MarkerStyle = MarkerStyle.Circle;
-                        Chart7.Series[country].MarkerSize = 5;
-                        Chart7.Series[country].MarkerColor = Color.Red;
-                        Chart7.Titles.Clear();
-                        Chart7.Titles.Add("Nav 206 Marks on Attributes ");
-
-                    }
-
-                    Chart7.Legends[0].Enabled = true;
-                    // Chart1.ChartAreas[0].AxisX.Enabled = AxisEnabled.False;
-
-
-
-                }
-                catch
-                {
-
-
-                }
-
-                finally
-                {
-
-                    con.Close();
-
-                }
-
-
-            }
-        }
         private void CreateChart3()
         {
             MainDetailsNewAbility.Tables.Clear();
@@ -698,29 +586,13 @@ namespace Officer206Analyzer
 
         protected void grdReport2_ItemDataBound(object sender, GridItemEventArgs e)
         {
-            int rowIndex = e.Item.RowIndex; 
+            //if (e.Item is GridDataItem)
+            //{
+            //    int strIndex = grdReport2.MasterTableView.CurrentPageIndex;
 
-
-            if (e.Item is GridDataItem)
-            {
-                GridDataItem item = (GridDataItem)e.Item;
-                string x = item["Remarks"].Text;
-                if (x.Length > 6)
-                {
-
-                    e.Item.BackColor = System.Drawing.Color.Orange;
-                    e.Item.ForeColor = System.Drawing.Color.Black;
-                    e.Item.Font.Bold = true;
-
-                }
-                else 
-                {
-                
-                
-                }
-           
-            }
-
+            //    Label lbl = e.Item.FindControl("lblSn2") as Label;
+            //    lbl.Text = Convert.ToString((strIndex * grdReport2.PageCount) + e.Item.ItemIndex + 1);
+            //}
             if (e.Item is GridDataItem)
             {
                 GridDataItem item = (GridDataItem)e.Item;
@@ -732,9 +604,6 @@ namespace Officer206Analyzer
                 hyplink.Target = "_blank";
                 item["IO_Comments"].Controls.Add(hyplink);
 
-
-
-               
 
             }
 
@@ -925,7 +794,7 @@ namespace Officer206Analyzer
 
                 if (CheckBox1.Checked == true)
                 {
-                    Panel9.Visible = false;
+                    // Panel5.Visible = false;
                     Panel6.Visible = true;
 
                     int Years = int.Parse(ddlYear.SelectedItem.Value.ToString());
@@ -1014,7 +883,7 @@ namespace Officer206Analyzer
 
                 if (CheckBox2.Checked == true)
                 {
-                    Panel9.Visible = false;
+                    // Panel5.Visible = false;
                     Panel6.Visible = true;
                     string Rank = (ddlRank.SelectedItem.Value.ToString());
 
@@ -1088,7 +957,7 @@ namespace Officer206Analyzer
 
                 if (CheckBox5.Checked == true)
                 {
-                    Panel9.Visible = false;
+                    // Panel5.Visible = false;
                     Panel6.Visible = true;
                     string DutyType = (ddlDuty.SelectedItem.Value.ToString());
 
@@ -1158,11 +1027,11 @@ namespace Officer206Analyzer
 
                 }
 
-                if (CheckBox4.Checked == true && ddlAttribute.SelectedValue.ToString()!="All")
+                if (CheckBox4.Checked == true)
                 {
                     // Panel5.Visible = false;
                     Panel6.Visible = true;
-                    Panel9.Visible = false;
+
                     MDV.Tables.Clear();
 
                     MDV.Clear();
@@ -1234,124 +1103,16 @@ namespace Officer206Analyzer
 
                 }
 
-
-
-                if (CheckBox4.Checked == true && ddlAttribute.SelectedValue.ToString() == "All")
-                {
-                    // Panel5.Visible = false;
-                    Panel6.Visible = false;
-                    Panel9.Visible = true;
-                    MDV.Tables.Clear();
-
-                    MDV.Clear();
-
-                    try
-                    {
-                        
-                            CreateChart7();
-                        
-                    }
-                    catch
-                    {
-
-
-
-                    }
-
-                    finally
-                    {
-
-                       
-                    }
-
-
-                }
-
             }
             else if (CheckBox3.Checked == true && txtDateFrom.SelectedDate.ToString().Length > 0 && txtDateTo.SelectedDate.ToString().Length > 0)
             {
 
-               
-                if(CheckBox3.Checked==true){
 
-
-
-                    Panel9.Visible = false;
-                    Panel6.Visible = true;
-                  
-
-                    MDV.Tables.Clear();
-
-                    MDV.Clear();
-
-                    try
-                    {
-                        SqlDataAdapter sqlda = new SqlDataAdapter();
-
-
-                        string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString();
-                        SqlConnection con = new SqlConnection(ConnectionString);
-                        SqlCommand cmd = new SqlCommand();
-                        con.Open();
-                        cmd.Parameters.Clear();
-                        cmd = new SqlCommand("HRIS_Officer206Analyzer_CatoTen2", con);
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                       
-                        cmd.Parameters.Add("@OFF", SqlDbType.Int).Value = int.Parse(txtoffno.Text);
-                        cmd.Parameters.Add("@FDATE", SqlDbType.Date).Value = txtDateFrom.SelectedDate;
-                        cmd.Parameters.Add("@TDATE", SqlDbType.Date).Value = txtDateTo.SelectedDate;
-                        // cmd.Parameters.Add("@ServiceType", SqlDbType.VarChar, 5).Value = ddlst.SelectedValue.ToString();
-                        cmd.ExecuteNonQuery();
-                        sqlda.SelectCommand = cmd;
-                        sqlda.Fill(MDV);
-
-                        if (MDV.Tables.Count > 0)
-                        {
-                            if (MDV.Tables[0].Rows.Count > 0)
-                            {
-                                for (int c = 0; MDV.Tables[0].Rows.Count > c; c++)
-                                {
-                                    string valu = obj.Decrypt(MDV.Tables[0].Rows[c]["TotalMark"].ToString());
-                                    MDV.Tables[0].Rows[c]["TotalMark"] = valu;
-                                    MDV.Tables[0].AcceptChanges();
-                                }
-                                this.Chart3.DataSource = MDV.Tables[0];
-                                this.Chart3.Series[0].XValueMember = "AssesmentPeriodOfNav206To";
-                                this.Chart3.Series[0].YValueMembers = "TotalMark";
-                                Chart3.Series[0].Label = "#VALY";
-                                Chart3.Series[0].MarkerStyle = MarkerStyle.Circle;
-                                Chart3.Series[0].Color = GetTheChartColor(MDV.Tables[0]);
-                                Chart3.Series[0].MarkerStyle = MarkerStyle.Circle;
-                                Chart3.Series[0].MarkerSize = 6;
-                                Chart3.Series[0].MarkerColor = Color.Red;
-                                Chart3.Titles.Clear();
-                                Chart3.Titles.Add("Nav 206 Marks" );
-                                this.Chart3.DataBind();
-                            }
-                        }
-
-                    }
-                    catch
-                    {
-
-
-
-                    }
-
-                    finally
-                    {
-
-                        con.Close();
-                    }
-
-
-                }
 
 
                 if (CheckBox2.Checked == true)
                 {
-                    Panel9.Visible = false;
+                    // Panel5.Visible = false;
                     Panel6.Visible = true;
                     string Rank = (ddlRank.SelectedItem.Value.ToString());
 
@@ -1427,7 +1188,7 @@ namespace Officer206Analyzer
 
                 if (CheckBox5.Checked == true)
                 {
-                    Panel9.Visible = false;
+                    // Panel5.Visible = false;
                     Panel6.Visible = true;
                     string DutyType = (ddlDuty.SelectedItem.Value.ToString());
 
@@ -1499,9 +1260,9 @@ namespace Officer206Analyzer
 
                 }
 
-                if (CheckBox4.Checked == true && ddlAttribute.SelectedValue.ToString()!="All")
+                if (CheckBox4.Checked == true)
                 {
-                    Panel9.Visible = false;
+                    // Panel5.Visible = false;
                     Panel6.Visible = true;
 
                     MDV.Tables.Clear();
@@ -1641,14 +1402,6 @@ namespace Officer206Analyzer
             stripLine7.BackColor = Color.FromArgb(255, Color.DarkGreen);
             stripLine7.BackGradientStyle = GradientStyle.None;
             Chart3.ChartAreas[0].AxisY.StripLines.Add(stripLine7);
-
-            StripLine stripLine8 = new StripLine();
-            stripLine8.StripWidth = 10;
-            stripLine8.Interval = 10;
-            stripLine8.IntervalOffset = 70;
-            stripLine8.BackColor = Color.FromArgb(255, Color.DarkGreen);
-            stripLine8.BackGradientStyle = GradientStyle.None;
-            Chart3.ChartAreas[0].AxisY.StripLines.Add(stripLine8);
         }
 
         private  DataTable GetData(DataTable MainDetailsR)
@@ -1959,73 +1712,6 @@ namespace Officer206Analyzer
 
 
 
-
-            this.Chart7.DataSource = dtCurrentTable;
-
-            //////Mapping a field with x-value of chart
-            this.Chart7.Series[0].XValueMember = "Date";
-            this.Chart7.Series[0].YValueMembers = "Administrative_Ability";
-            //this.Chart4.Series[0]["PixelPointWidth"] = "50";
-
-            this.Chart7.Series[1].XValueMember = "Date";
-            this.Chart7.Series[1].YValueMembers = "Leadership";
-            // this.Chart4.Series[1]["PixelPointWidth"] = "50";
-
-            this.Chart7.Series[2].XValueMember = "Date";
-            this.Chart7.Series[2].YValueMembers = "Mental_Qualities";
-            // this.Chart4.Series[2]["PixelPointWidth"] = "50";
-
-            this.Chart7.Series[3].XValueMember = "Date";
-            this.Chart7.Series[3].YValueMembers = "Personal_Qualities";
-            //this.Chart4.Series[3]["PixelPointWidth"] = "50";
-
-            this.Chart7.Series[4].XValueMember = "Date";
-            this.Chart7.Series[4].YValueMembers = "Professional_Ability";
-            //this.Chart4.Series[4]["PixelPointWidth"] = "50";
-
-            // this.Chart1.ChartAreas["ChartArea1"].AxisX.LabelStyle.Enabled = false;
-            //  Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
-            // Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
-            //Chart1.Series[0].Label = "#VALY\n#VALX";
-            //////Bind the DataTable with Chart
-
-            //Chart1.ChartAreas["ChartArea1"].AxisX.ScrollBar.Enabled = true;
-            Chart7.ChartAreas["ChartArea1"].AxisX.IsLabelAutoFit = true;
-            Chart7.Titles.Clear();
-            Chart7.Titles.Add("Nav 206 Marks on Attributes");
-            Chart7.Series[0].BorderWidth = 3;
-            Chart7.Series[0].ChartType = SeriesChartType.Line;
-            Chart7.Series[0].MarkerStyle = MarkerStyle.Circle;
-            Chart7.Series[0].MarkerSize = 4;
-            Chart7.Series[0].MarkerColor = Color.Blue;
-
-            Chart7.Series[1].BorderWidth = 3;
-            Chart7.Series[1].ChartType = SeriesChartType.Line;
-            Chart7.Series[1].MarkerStyle = MarkerStyle.Circle;
-            Chart7.Series[1].MarkerSize = 4;
-            Chart7.Series[1].MarkerColor = Color.Black;
-
-            Chart7.Series[2].BorderWidth = 3;
-            Chart7.Series[2].ChartType = SeriesChartType.Line;
-            Chart7.Series[2].MarkerStyle = MarkerStyle.Circle;
-            Chart7.Series[2].MarkerSize = 4;
-            Chart7.Series[2].MarkerColor = Color.Green;
-
-
-            Chart7.Series[3].BorderWidth = 3;
-            Chart7.Series[3].ChartType = SeriesChartType.Line;
-            Chart7.Series[3].MarkerStyle = MarkerStyle.Circle;
-            Chart7.Series[3].MarkerSize = 4;
-            Chart7.Series[3].MarkerColor = Color.Red;
-
-            Chart7.Series[4].BorderWidth = 3;
-            Chart7.Series[4].ChartType = SeriesChartType.Line;
-            Chart7.Series[4].MarkerStyle = MarkerStyle.Circle;
-            Chart7.Series[4].MarkerSize = 4;
-            Chart7.Series[4].MarkerColor = Color.Orange;
-
-            // Chart1.ChartAreas["ChartArea1"].AxisX.ScaleView.Size = 20;
-            this.Chart7.DataBind();
 
         }
 

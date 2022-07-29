@@ -104,10 +104,10 @@
     <Content Include="Bootstrap5\js\bootstrap.js" />
     <Content Include="Bootstrap5\js\bootstrap.min.js" />
     <Content Include="calendar.png" />
+    <Content Include="css\jquery-ui.css" />
     <Content Include="css\sb-admin.css" />
     <Content Include="css\sb-admin.min.css" />
     <Content Include="Error.aspx" />
-    <Content Include="Errors.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="images\calendar.png" />
     <Content Include="images\Home\11.jpg" />
@@ -115,6 +115,7 @@
     <Content Include="images\pro2.png" />
     <Content Include="images\pro3.jpg" />
     <Content Include="Insert206.aspx" />
+    <Content Include="js\jquery-ui.js" />
     <Content Include="Login.aspx" />
     <Content Include="Nav206Report.aspx" />
     <Content Include="OTPVarify.aspx" />
