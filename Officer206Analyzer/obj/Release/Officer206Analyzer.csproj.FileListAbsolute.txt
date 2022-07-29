@@ -37,9 +37,3 @@ D:\NAV206ANALYZER\Officer206Analyzer_2022_05_05\Officer206Analyzer\bin\Officer20
 D:\NAV206ANALYZER\Officer206Analyzer_2022_05_05\Officer206Analyzer\obj\Release\Officer206Analyzer.csprojResolveAssemblyReference.cache
 D:\NAV206ANALYZER\Officer206Analyzer_2022_05_05\Officer206Analyzer\obj\Release\Officer206Analyzer.dll
 D:\NAV206ANALYZER\Officer206Analyzer_2022_05_05\Officer206Analyzer\obj\Release\Officer206Analyzer.pdb
-D:\NAV206ANALYZER\Officer206Analyzer_2022_07_18\Officer206Analyzer\bin\Officer206Analyzer.dll.config
-D:\NAV206ANALYZER\Officer206Analyzer_2022_07_18\Officer206Analyzer\bin\Officer206Analyzer.dll
-D:\NAV206ANALYZER\Officer206Analyzer_2022_07_18\Officer206Analyzer\bin\Officer206Analyzer.pdb
-D:\NAV206ANALYZER\Officer206Analyzer_2022_07_18\Officer206Analyzer\obj\Release\Officer206Analyzer.csprojResolveAssemblyReference.cache
-D:\NAV206ANALYZER\Officer206Analyzer_2022_07_18\Officer206Analyzer\obj\Release\Officer206Analyzer.dll
-D:\NAV206ANALYZER\Officer206Analyzer_2022_07_18\Officer206Analyzer\obj\Release\Officer206Analyzer.pdb

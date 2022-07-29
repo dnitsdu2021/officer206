@@ -323,12 +323,6 @@
                   <div class="col-3"></div>
                   <div class="col-3"></div>
               </div><br />
-
-                       <div class="form-group row">
-                  <div class="col-2"><asp:Label ID="Label7" runat="server"   Text="Remarks"></asp:Label></div>
-                  <div class="col-10"><asp:TextBox ID="txtremarks" runat="server" CssClass="form-control form-control-sm" TextMode="MultiLine" Width="100%"></asp:TextBox></div>
-             
-              </div>
                    </div>
                    <div class="col-3">
                         <asp:Image ID="imgApplicantImage" runat="server" ImageUrl="~/images/pro3.jpg" class="img-fluid d-flex justify-content-end align-items-end pe-3" Height="150px" />
@@ -353,12 +347,8 @@
               <div class="form-group row">
                   <div class="col-2"><asp:Label ID="Label55" runat="server"   Text="TOTAL"></asp:Label></div>
                   <div class="col-1"><asp:TextBox ID="txtTotal" runat="server" CssClass="form-control form-control-sm">0</asp:TextBox></div>
-             <br />
+             
               </div>
-                                 
-
-
-
               <br />
               <div class="col-2"> <asp:Label ID="Label23" runat="server" Text="PROFESSIONAL ABILITY" class="text-muted text-decoration-underline"></asp:Label> </div>
               <div class="form-group row bg-light">             

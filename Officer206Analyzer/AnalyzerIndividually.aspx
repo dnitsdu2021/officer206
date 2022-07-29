@@ -216,7 +216,7 @@
                                 </Series>
                                 <ChartAreas>
                                     <asp:ChartArea Name="ChartArea1">
-                                        <AxisY Maximum="170" Minimum="90" Interval="10" IntervalType="Number" Title="Marks">
+                                        <AxisY Maximum="160" Minimum="90" Interval="10" IntervalType="Number" Title="Marks">
                                         </AxisY>
                                         <AxisX Title="Date">
                                         </AxisX>
