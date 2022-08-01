@@ -86,15 +86,15 @@
                     <a class="nav-link dropdown-toggle" href="#" id="A1" data-bs-toggle="dropdown" aria-expanded="false">Edit/Save</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown05">
                         <%--<li><a class="dropdown-item" href="View206.aspx">View NAV 206</a></li>--%>
-                        <li><a class="dropdown-item" href="Insert206.aspx">Insert NAV 206</a></li>
-                        <li><a class="dropdown-item" href="update206Marks.aspx">Edit Nav206</a></li>
+                        <li><a class="dropdown-item" href="/Insert206.aspx">Insert NAV 206</a></li>
+                        <li><a class="dropdown-item" href="/update206Marks.aspx">Edit Nav206</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="A2" data-bs-toggle="dropdown" aria-expanded="false">Analyze</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown05">
-                        <li><a class="dropdown-item" href="View206.aspx">Individual  Analyzer </a></li>
-                        <li><a class="dropdown-item" href="AnalyzerIndividually.aspx">Multiple  Analyzer </a></li>
+                        <li><a class="dropdown-item" href="/View206.aspx">Individual  Analyzer </a></li>
+                        <li><a class="dropdown-item" href="/AnalyzerIndividually.aspx">Multiple  Analyzer </a></li>
                       <%--  <li><a class="dropdown-item" href="#about">Initiating Officer</a></li>
                         <li><a class="dropdown-item" href="#news">Reporting Officer</a></li>--%>
                     </ul>
@@ -103,12 +103,12 @@
                     <a class="nav-link dropdown-toggle" href="#" id="A2" data-bs-toggle="dropdown" aria-expanded="false">Reports</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown05">
                     
-                    <li><a class="dropdown-item"  href="AccessLogReport.aspx">Access Log</a></li>
+                    <li><a class="dropdown-item"  href="/AccessLogReport.aspx">Access Log</a></li>
 <%--                    <ul class="dropdown-menu" aria-labelledby="dropdown05">
                         <li><a class="dropdown-item" href="Nav206Report.aspx">Average Marks of Selected Officers</a></li>
                     </ul>--%>
                 </li>
-                <li class="nav-item"><a href="Login.aspx" class="nav-link">Logout</a></li>
+                <li class="nav-item"><a href="/Login.aspx" class="nav-link">Logout</a></li>
 
             </ul>
         </header>
