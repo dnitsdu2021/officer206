@@ -199,16 +199,16 @@
                             <%--<asp:CheckBox ID="cbDT" runat="server" AutoPostBack="True" Font-Bold="True"  OnCheckedChanged="cbDT_CheckedChanged" Text="View Duty Type Chart" />--%>
                             <hr />
                             <div class="row">
-                                <div class="col-8">
+                                <div class="col-10">
                                     <asp:Panel runat="server">
-                                        <asp:Chart ID="Chart1" runat="server" BackSecondaryColor="224, 224, 224" BorderlineColor="192, 192, 255" Palette="Berry" PaletteCustomColors="0, 0, 192" Width="900px">
+                                        <asp:Chart ID="Chart1" runat="server" BackSecondaryColor="224, 224, 224" BorderlineColor="192, 192, 255" Palette="Berry" PaletteCustomColors="0, 0, 192" Width="1094px">
                                             <Series>
                                                 <asp:Series ChartArea="Nav 206 Marks Chart" ChartType="Line" Font="Microsoft Sans Serif, 8.25pt, style=Bold" Name="Series1">
                                                 </asp:Series>
                                             </Series>
                                             <ChartAreas>
                                                 <asp:ChartArea BackColor="LightCyan" BackSecondaryColor="0, 192, 192" Name="Nav 206 Marks Chart">
-                                                    <AxisY Title="Nav 206 Marks" TitleFont="Microsoft Sans Serif, 8pt, style=Bold" Maximum="160" Minimum="90" Interval="10" IntervalType="Number">
+                                                    <AxisY Title="Nav 206 Marks" TitleFont="Microsoft Sans Serif, 8pt, style=Bold" Maximum="170" Minimum="90" Interval="10" IntervalType="Number">
                                                     </AxisY>
                                                     <AxisX InterlacedColor="255, 255, 192" IsLabelAutoFit="False" Title="Nav 206 Dates" TitleFont="Microsoft Sans Serif, 8pt, style=Bold">
                                                         <LabelStyle Angle="45" />
@@ -220,7 +220,7 @@
                                     </asp:Panel>
 
                                 </div>
-                                <div class="col-4">
+                                <div class="col-2">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item d-flex justify-content-between align-items-start">
                                             <span class="badge rounded-pill" style="background-color: darkgreen;">&nbsp;</span>
