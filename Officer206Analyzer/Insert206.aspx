@@ -281,6 +281,9 @@
                         <asp:ListItem>End_of_the_year</asp:ListItem>
                         <asp:ListItem>Change_Of_RO</asp:ListItem>
                         <asp:ListItem>Special_Occasion</asp:ListItem>
+                            <asp:ListItem>On_Retirement</asp:ListItem>
+                            <asp:ListItem>Resignation</asp:ListItem>
+                            <asp:ListItem>Withdrawal_Or_Suspend</asp:ListItem>
                         </asp:DropDownList></div>
                   <div class="col-3"><asp:Label ID="Label10" runat="server" Text="Duty Type"></asp:Label></div>
                   <div class="col-3">
