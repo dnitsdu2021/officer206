@@ -26,7 +26,10 @@ namespace Officer206Analyzer
         public AccessLog(HttpSessionState session)
         {
 
-                _userName = session["NameWithInitials"].ToString();
+                
+            
+            
+            _userName = session["NameWithInitials"].ToString();
                 _loginEmail = session["email"].ToString();
                 _userRole = session["UserRole"].ToString();
 

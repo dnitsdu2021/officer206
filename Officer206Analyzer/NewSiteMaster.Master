@@ -55,7 +55,8 @@
                     window.location = "/Login.aspx";
                 }, timeout);
             };
-            function ResetSession() {
+            function Reset
+                () {
                 //Redirect to refresh Session.
                 window.location = window.location.href;
             };
@@ -137,7 +138,7 @@
     </div>
 <%--    <h4>
         Session Idle: <span id="secondsIdle"></span> seconds.</h4>--%>
-<%--        <div id="dialog" >
+<%--       <div id="dialog" >
         Your Session will expire in <span id="seconds"></span> seconds.<br />
         Do you want to reset?
     </div>--%>

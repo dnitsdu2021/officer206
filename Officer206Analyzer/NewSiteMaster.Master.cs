@@ -81,15 +81,15 @@ namespace Officer206Analyzer
                     else
                     {
                         Boolean Reset = (bool)Session["Reset"];
-                        if (Reset == false)
-                        {
+
+                            Session["Reset"] = true;
                             Response.Cache.SetCacheability(HttpCacheability.NoCache);
                             Configuration config = WebConfigurationManager.OpenWebConfiguration("~/Web.Config");
                             SessionStateSection section = (SessionStateSection)config.GetSection("system.web/sessionState");
-                            int timeout = (int)section.Timeout.TotalMinutes * 1000 * 60 * 30;
-                            Session["Reset"] = true;
+                            int timeout = (int)section.Timeout.TotalMinutes * 60 * 60*30;
+                            
                             Page.ClientScript.RegisterStartupScript(this.GetType(), "SessionAlert", "SessionExpireAlert(" + timeout + ");", true);
-                        }
+                        
                         
 
                     }
