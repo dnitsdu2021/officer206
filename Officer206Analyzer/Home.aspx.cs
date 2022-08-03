@@ -15,33 +15,33 @@ namespace Officer206Analyzer
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            accessLog = new AccessLog(Session);
-            AccessPage = "Home"; 
+            //accessLog = new AccessLog(Session);
+            //AccessPage = "Home"; 
             if (!IsPostBack) {
 
-                var redirectUrl = accessLog.IsUserAuthorizedForAccessCurrentUrl(AccessPage);
+                //var redirectUrl = accessLog.IsUserAuthorizedForAccessCurrentUrl(AccessPage);
 
-                Response.RedirectIsSuccess(redirectUrl);
+                //Response.RedirectIsSuccess(redirectUrl);
 
-                //try
-                //{
-                //    //Session["LOGIN_NAME"] = "sam";
-                //    String userName = Session["nic"] as string;
-                //    if (userName == "")
-                //    {
-                //        Response.Redirect("Login.aspx");
-                //    }
-                //    else
-                //    {
+                try
+                {
+                    //Session["LOGIN_NAME"] = "sam";
+                    String userName = Session["nic"] as string;
+                    if (userName == "")
+                    {
+                        Response.Redirect("Login.aspx");
+                    }
+                    else
+                    {
 
-                        
 
-                //    }
-                //}
-                //catch
-                //{
-                //    Response.Redirect("Login.aspx");
-                //}
+
+                    }
+                }
+                catch
+                {
+                    Response.Redirect("Login.aspx");
+                }
 
 
 
