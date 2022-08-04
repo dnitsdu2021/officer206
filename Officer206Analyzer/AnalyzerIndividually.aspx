@@ -234,8 +234,8 @@
 
                 <div class="accordion-item">
                     <h4 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
-                            #1  206 Comparision</button>
+                        <%--<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
+                            #1  206 Comparision</button>--%>
                     </h4>
 
                     <div id="collapsetwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo">
