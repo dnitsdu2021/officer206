@@ -2107,8 +2107,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="CommentsABBNHQ\" />
+    <Folder Include="CommentsABB\" />
+    <Folder Include="CommentsCofN\" />
     <Folder Include="CommentsIniOfficer\" />
     <Folder Include="CommentsRepOfficer\" />
+    <Folder Include="CommentsVNF\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
