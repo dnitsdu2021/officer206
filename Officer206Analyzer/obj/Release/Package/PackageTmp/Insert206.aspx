@@ -281,6 +281,9 @@
                         <asp:ListItem>End_of_the_year</asp:ListItem>
                         <asp:ListItem>Change_Of_RO</asp:ListItem>
                         <asp:ListItem>Special_Occasion</asp:ListItem>
+                            <asp:ListItem>On_Retirement</asp:ListItem>
+                            <asp:ListItem>Resignation</asp:ListItem>
+                            <asp:ListItem>Withdrawal_Or_Suspend</asp:ListItem>
                         </asp:DropDownList></div>
                   <div class="col-3"><asp:Label ID="Label10" runat="server" Text="Duty Type"></asp:Label></div>
                   <div class="col-3">
@@ -323,6 +326,12 @@
                   <div class="col-3"></div>
                   <div class="col-3"></div>
               </div><br />
+
+                       <div class="form-group row">
+                  <div class="col-2"><asp:Label ID="Label7" runat="server"   Text="Remarks"></asp:Label></div>
+                  <div class="col-10"><asp:TextBox ID="txtremarks" runat="server" CssClass="form-control form-control-sm" TextMode="MultiLine" Width="100%"></asp:TextBox></div>
+             
+              </div>
                    </div>
                    <div class="col-3">
                         <asp:Image ID="imgApplicantImage" runat="server" ImageUrl="~/images/pro3.jpg" class="img-fluid d-flex justify-content-end align-items-end pe-3" Height="150px" />
@@ -347,8 +356,12 @@
               <div class="form-group row">
                   <div class="col-2"><asp:Label ID="Label55" runat="server"   Text="TOTAL"></asp:Label></div>
                   <div class="col-1"><asp:TextBox ID="txtTotal" runat="server" CssClass="form-control form-control-sm">0</asp:TextBox></div>
-             
+             <br />
               </div>
+                                 
+
+
+
               <br />
               <div class="col-2"> <asp:Label ID="Label23" runat="server" Text="PROFESSIONAL ABILITY" class="text-muted text-decoration-underline"></asp:Label> </div>
               <div class="form-group row bg-light">             
