@@ -326,8 +326,7 @@
                   <div class="col-3"></div>
                   <div class="col-3"></div>
               </div><br />
-
-                       <div class="form-group row">
+                                              <div class="form-group row">
                   <div class="col-2"><asp:Label ID="Label7" runat="server"   Text="Remarks"></asp:Label></div>
                   <div class="col-10"><asp:TextBox ID="txtremarks" runat="server" CssClass="form-control form-control-sm" TextMode="MultiLine" Width="100%"></asp:TextBox></div>
              
@@ -356,12 +355,8 @@
               <div class="form-group row">
                   <div class="col-2"><asp:Label ID="Label55" runat="server"   Text="TOTAL"></asp:Label></div>
                   <div class="col-1"><asp:TextBox ID="txtTotal" runat="server" CssClass="form-control form-control-sm">0</asp:TextBox></div>
-             <br />
+             
               </div>
-                                 
-
-
-
               <br />
               <div class="col-2"> <asp:Label ID="Label23" runat="server" Text="PROFESSIONAL ABILITY" class="text-muted text-decoration-underline"></asp:Label> </div>
               <div class="form-group row bg-light">             
@@ -488,29 +483,12 @@
                         </asp:DropDownList></div>
                  <div class="col-2"><asp:Button ID="btnReportingOfficerSearch" runat="server" Text="Search" Width="75px" OnClick="btnReportingOfficerSearch_Click" class="btn btn-outline-info btn-sm"/></div>
              </div><br />
-             
              <div class="form-group row">
                  <div class="col-2"><asp:Label ID="Label19" runat="server"   Text="Name"></asp:Label></div>
                  <div class="col-2"><asp:TextBox ID="txtReportingOfficerName" runat="server" CssClass="form-control form-control-sm"></asp:TextBox></div>
                  <div class="col-2"> <asp:Label ID="Label20" runat="server"   Text="General Report"></asp:Label></div>
                  <div class="col-4"><asp:FileUpload ID="flpRep" runat="server" CssClass="form-control form-control-sm" /></div>
              </div>
-             <asp:Label ID="Label58" runat="server" CssClass="text text-decoration-underline"  Text="REMARKS OF AREA ASSESSMENT BOARD (AAB)"></asp:Label>
-             <div class="form-group row">
-                <div class="col-4"><asp:FileUpload ID="FileUploadAAB" runat="server" CssClass="form-control form-control-sm" /></div>
-             </div><br />
-             <asp:Label ID="Label11" runat="server" CssClass="text text-decoration-underline"  Text="REMARKS OF NHQ ASSESSMENT BOARD (NHQ-AB)"></asp:Label>
-             <div class="form-group row">
-                <div class="col-4"><asp:FileUpload ID="FileUploadAABNHQ" runat="server" CssClass="form-control form-control-sm" /></div>
-             </div><br />
-              <asp:Label ID="Label53" runat="server" CssClass="text text-decoration-underline"  Text="REMARKS OF DIRECTOR GENERAL/CMDE VNF/DIRECTOR/CO VNF"></asp:Label>
-             <div class="form-group row">
-                <div class="col-4"><asp:FileUpload ID="FileUploadVNF" runat="server" CssClass="form-control form-control-sm" /></div>
-             </div><br />
-             <asp:Label ID="Label59" runat="server" CssClass="text text-decoration-underline"  Text="REMARKS OF THE COMMANDER OF THE NAVY/ CHIEF OF STAFF"></asp:Label>
-             <div class="form-group row">
-                <div class="col-4"><asp:FileUpload ID="FileUploadCofN" runat="server" CssClass="form-control form-control-sm" /></div>
-             </div><br />
                             </fieldset>
                         </asp:Panel>
                     </div>
