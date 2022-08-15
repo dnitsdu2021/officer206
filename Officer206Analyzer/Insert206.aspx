@@ -326,6 +326,11 @@
                   <div class="col-3"></div>
                   <div class="col-3"></div>
               </div><br />
+                                              <div class="form-group row">
+                  <div class="col-2"><asp:Label ID="Label7" runat="server"   Text="Remarks"></asp:Label></div>
+                  <div class="col-10"><asp:TextBox ID="txtremarks" runat="server" CssClass="form-control form-control-sm" TextMode="MultiLine" Width="100%"></asp:TextBox></div>
+             
+              </div>
                    </div>
                    <div class="col-3">
                         <asp:Image ID="imgApplicantImage" runat="server" ImageUrl="~/images/pro3.jpg" class="img-fluid d-flex justify-content-end align-items-end pe-3" Height="150px" />
