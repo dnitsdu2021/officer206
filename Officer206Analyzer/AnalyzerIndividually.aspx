@@ -104,7 +104,7 @@
                             <asp:Label ID="Label5" runat="server" Text="Official No"></asp:Label>
                         </div>
                                  <div class="col-3">
-                            <asp:TextBox ID="txtOfficialNumberOfApplicant" runat="server" CssClass="form-control form-control-sm " ></asp:TextBox>                           
+                            <asp:TextBox ID="txtOfficialNumberOfApplicant" runat="server" CssClass="form-control form-control-sm " ReadOnly="True" ></asp:TextBox>                           
                         </div>
                                  <div class="col-3">
                                      <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Add To List" CssClass="btn btn-outline-secondary btn-sm" />
@@ -203,15 +203,14 @@
                 <div class="accordion-item">
                     <h4 class="accordion-header" id="headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne">
-                            #1  206 Comparision
-                        </button>
+                            #1  206 Comparision</button>
                     </h4>
 
                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
                         <div class="col">
-                            <asp:Chart ID="Chart1" runat="server" Width="1000px">
+                            <asp:Chart ID="Chart1" runat="server" Width="1313px">
                                 <Series>
-                                    <asp:Series Legend="Legend1" Name="ApplicantOfficialNumber" ChartType="Line" ChartArea="ChartArea1">
+                                    <asp:Series Legend="Legend1" Name="ApplicantOfficialNumber" ChartType="Line" ChartArea="ChartArea1" IsValueShownAsLabel="True">
                                     </asp:Series>
                                 </Series>
                                 <ChartAreas>
@@ -227,19 +226,41 @@
                                     </asp:Legend>
                                 </Legends>
                             </asp:Chart>
+
+                            
                         </div>
-                    </div>
+                        
                 </div>
 
                 <div class="accordion-item">
                     <h4 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
-                            #1  206 Comparision</button>
+                        <%--<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
+                            #1  206 Comparision</button>--%>
                     </h4>
 
                     <div id="collapsetwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo">
                         <div class="col">
-                            <asp:GridView ID="GridView1" runat="server" Visible="False">
+                           
+
+                            <asp:Chart ID="ChartAVG" runat="server" Width="1313px">
+                                <Series>
+                                    <asp:Series Legend="Legend1" Name="ApplicantOfficialNumber" ChartType="Line" ChartArea="ChartArea1" IsValueShownAsLabel="True" IsVisibleInLegend="False">
+                                    </asp:Series>
+                                </Series>
+                                <ChartAreas>
+                                    <asp:ChartArea Name="ChartArea1">
+                                        <AxisY Maximum="160" Minimum="90" Interval="10" IntervalType="Number" Title="Marks">
+                                        </AxisY>
+                                        <AxisX Title="Date">
+                                        </AxisX>
+                                    </asp:ChartArea>
+                                </ChartAreas>
+                                <Legends>
+                                    <asp:Legend Name="Legend1">
+                                    </asp:Legend>
+                                </Legends>
+                            </asp:Chart>
+                             <asp:GridView ID="GridView1" runat="server" Visible="False">
                             </asp:GridView>
                         </div>
                     </div>

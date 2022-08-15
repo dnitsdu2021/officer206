@@ -433,7 +433,7 @@ namespace Officer206Analyzer
 
                     Chart1.Series.Add(new Series(country));
 
-                    Chart1.Titles.Add(country + "-AVG=" + Math.Round(sum, 2).ToString()).Alignment = ContentAlignment.BottomRight; ;
+                    ChartAVG.Titles.Add(country + "-AVG=" + Math.Round(sum, 2).ToString()).Alignment = ContentAlignment.BottomRight; ;
                     // Chart1.Titles[country+"-AVG="+sum.ToString()].Alignment = ContentAlignment.MiddleRight;
                     //Chart1.Series[country].IsValueShownAsLabel = true;
                     Chart1.Series[country].BorderWidth = 3;
@@ -445,7 +445,7 @@ namespace Officer206Analyzer
                 }
 
                 Chart1.Legends[0].Enabled = true;
-               // Chart1.ChartAreas[0].AxisX.Enabled = AxisEnabled.False;
+                //Chart1.ChartAreas[0].AxisX.Enabled = AxisEnabled.False;
                 
             }
 
