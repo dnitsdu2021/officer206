@@ -442,6 +442,14 @@
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn DataField="RO_Comments" FilterControlAltText="Filter RO_Comments column" Groupable="False" HeaderText="RO_Comments" UniqueName="RO_Comments" Visible="true">
                                         </telerik:GridBoundColumn>
+                                         <telerik:GridBoundColumn DataField="ABB_Comments" FilterControlAltText="Filter ABB_Comments column" Groupable="False" HeaderText="SECTION IX 1" UniqueName="ABB_Comments" Visible="true">
+                                        </telerik:GridBoundColumn>
+                                         <telerik:GridBoundColumn DataField="NHQ_AB_Comments" FilterControlAltText="Filter NHQ_AB_Comments column" Groupable="False" HeaderText="SECTION IX 2" UniqueName="NHQ_AB_Comments" Visible="true">
+                                        </telerik:GridBoundColumn>
+                                         <telerik:GridBoundColumn DataField="VNF_Comments" FilterControlAltText="Filter VNF_Comments column" Groupable="False" HeaderText="SECTION IX 3" UniqueName="VNF_Comments" Visible="true">
+                                        </telerik:GridBoundColumn>
+                                          <telerik:GridBoundColumn DataField="COFN_Comments" FilterControlAltText="Filter COFN_Comments column" Groupable="False" HeaderText="SECTION X" UniqueName="COFN_Comments" Visible="true">
+                                        </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn DataField="RepommentPath" FilterControlAltText="Filter RepommentPath column" Groupable="False" HeaderText="RepommentPath" UniqueName="RepommentPath" Visible="false">
                                         </telerik:GridBoundColumn>
                                     </Columns>
@@ -461,7 +469,7 @@
             <div class="accordion-item">
                 <h4 class="accordion-header" id="headingSix">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                        #3 APPOINTMENTS</button>
+                        #3 APPOINTMENTS                      #3 APPOINTMENTS</button>
                 </h4>
                 <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix">
                     <div class="accordion-body">
