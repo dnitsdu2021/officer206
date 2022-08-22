@@ -371,19 +371,3 @@ MigrationBackup/
 *.ini
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp
-HRIS/Duty_Roster/Duty_Roster_Platoon_view.aspx
-HRIS/Duty_Roster/Duty_Roster_Platoon_view.aspx.cs
-HRIS/Duty_Roster/Duty_Roster_Platoon_view.aspx.designer.cs
-HRIS/Duty_Roster/Duty_Roster_Platoon_ViewReport.aspx.cs
-HRIS/Duty_Roster/Duty_Roster_View_Report.aspx.cs
-HRIS/DutyView.cs
-HRIS/DutyView.rpt
-HRIS/HRIS.csproj
-HRIS/platoon.cs
-HRIS/platoon.rpt
-Officer206Analyzer.v12.suo
-Officer206Analyzer.v12.suo
-Officer206Analyzer/bin/Officer206Analyzer.dll
-Officer206Analyzer/obj/Debug/Officer206Analyzer.csprojResolveAssemblyReference.cache
-Officer206Analyzer/obj/Debug/Officer206Analyzer.pdb
-Officer206Analyzer/obj/Debug/Officer206Analyzer.csproj.FileListAbsolute.txt
