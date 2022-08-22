@@ -34,7 +34,6 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
-[Bb]in/
 [Oo]bj/
 [Pp]ublished
 
@@ -371,13 +370,3 @@ MigrationBackup/
 *.ini
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp
-HRIS/Duty_Roster/Duty_Roster_Platoon_view.aspx
-HRIS/Duty_Roster/Duty_Roster_Platoon_view.aspx.cs
-HRIS/Duty_Roster/Duty_Roster_Platoon_view.aspx.designer.cs
-HRIS/Duty_Roster/Duty_Roster_Platoon_ViewReport.aspx.cs
-HRIS/Duty_Roster/Duty_Roster_View_Report.aspx.cs
-HRIS/DutyView.cs
-HRIS/DutyView.rpt
-HRIS/HRIS.csproj
-HRIS/platoon.cs
-HRIS/platoon.rpt

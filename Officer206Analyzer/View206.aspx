@@ -199,9 +199,9 @@
                             <%--<asp:CheckBox ID="cbDT" runat="server" AutoPostBack="True" Font-Bold="True"  OnCheckedChanged="cbDT_CheckedChanged" Text="View Duty Type Chart" />--%>
                             <hr />
                             <div class="row">
-                                <div class="col-10">
+                                <div class="col-9">
                                     <asp:Panel runat="server">
-                                        <asp:Chart ID="Chart1" runat="server" BackSecondaryColor="224, 224, 224" BorderlineColor="192, 192, 255" Palette="Berry" PaletteCustomColors="0, 0, 192" Width="1094px">
+                                        <asp:Chart ID="Chart1" runat="server" BackSecondaryColor="224, 224, 224" BorderlineColor="192, 192, 255" Palette="Berry" PaletteCustomColors="0, 0, 192" Width="985px">
                                             <Series>
                                                 <asp:Series ChartArea="Nav 206 Marks Chart" ChartType="Line" Font="Microsoft Sans Serif, 8.25pt, style=Bold" Name="Series1">
                                                 </asp:Series>
@@ -220,7 +220,7 @@
                                     </asp:Panel>
 
                                 </div>
-                                <div class="col-2">
+                                <div class="col-3">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item d-flex justify-content-between align-items-start">
                                             <span class="badge rounded-pill" style="background-color: darkgreen;">&nbsp;</span>
@@ -452,6 +452,9 @@
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn DataField="RepommentPath" FilterControlAltText="Filter RepommentPath column" Groupable="False" HeaderText="RepommentPath" UniqueName="RepommentPath" Visible="false">
                                         </telerik:GridBoundColumn>
+                                        
+                                         <telerik:GridBoundColumn DataField="remarks" FilterControlAltText="Filter remarks column" Groupable="False" HeaderText="Remarks" UniqueName="remarks" Visible="true" ItemStyle-Width="50px">
+                                        </telerik:GridBoundColumn>
                                     </Columns>
                                     <EditFormSettings>
                                         <EditColumn FilterControlAltText="Filter EditCommandColumn column">
@@ -649,11 +652,12 @@
                                                     </div>
                                                     <div class="col-8">
                                                         <asp:DropDownList ID="ddlAttribute" runat="server" Enabled="False" Width="100%">
-                                                            <asp:ListItem Selected="True" Value="L">Leadership</asp:ListItem>
+                                                            <asp:ListItem Value="L">Leadership</asp:ListItem>
                                                             <asp:ListItem Value="AA">Administrative Ability</asp:ListItem>
                                                             <asp:ListItem Value="MQ">MentalQualities</asp:ListItem>
                                                             <asp:ListItem Value="PQ">PersonalQualities</asp:ListItem>
                                                             <asp:ListItem Value="PA">ProfessionalAbility</asp:ListItem>
+                                                            <asp:ListItem Selected="True">All</asp:ListItem>
                                                         </asp:DropDownList>
                                                     </div>
                                                 </div>
@@ -673,16 +677,16 @@
                                     </div>
                                     <br />
                                     <div class="form-group row">
-                                        <div class="col">
+                                        <div class="col-12">
                                             <asp:Panel ID="Panel6" runat="server" ScrollBars="Both">
-                                                <asp:Chart ID="Chart3" runat="server" BackSecondaryColor="224, 224, 224" BorderlineColor="192, 192, 255" Palette="Berry" PaletteCustomColors="0, 0, 192" Width="768px">
+                                                <asp:Chart ID="Chart3" runat="server" BackSecondaryColor="224, 224, 224" BorderlineColor="192, 192, 255" Palette="Berry" PaletteCustomColors="0, 0, 192" Width="1208px">
                                                     <Series>
                                                         <asp:Series ChartArea="Nav 206 Marks Chart" ChartType="Line" Font="Microsoft Sans Serif, 8.25pt, style=Bold" Name="Series1">
                                                         </asp:Series>
                                                     </Series>
                                                     <ChartAreas>
                                                         <asp:ChartArea BackColor="LightCyan" BackSecondaryColor="0, 192, 192" Name="Nav 206 Marks Chart">
-                                                            <AxisY Title="Nav 206 Marks" TitleFont="Microsoft Sans Serif, 8pt, style=Bold" Maximum="160" Minimum="90" Interval="10" IntervalType="Number">
+                                                            <AxisY Title="Nav 206 Marks" TitleFont="Microsoft Sans Serif, 8pt, style=Bold" Maximum="170" Minimum="90" Interval="10" IntervalType="Number">
                                                             </AxisY>
                                                             <AxisX InterlacedColor="255, 255, 192" IsLabelAutoFit="False" Title="Nav 206 Dates" TitleFont="Microsoft Sans Serif, 8pt, style=Bold">
                                                                 <LabelStyle Angle="45" />
@@ -694,6 +698,26 @@
                                             </asp:Panel>
                                         </div>
                                     </div>
+                                    <asp:Panel ID="Panel9" runat="server" ScrollBars="Both">
+                                        <asp:Chart ID="Chart7" runat="server" EnableViewState="True" Height="350px" OnLoad="Chart4_Load" Width="1300px">
+                                            <Series>
+                                                <asp:Series Legend="Legend1" Name="Attribute">
+                                                </asp:Series>
+                                            </Series>
+                                            <ChartAreas>
+                                                <asp:ChartArea Name="ChartArea1">
+                                                    <AxisY Interval="10" IntervalType="Number" Maximum="50" Minimum="0" Title="Marks">
+                                                    </AxisY>
+                                                    <AxisX Title="Date">
+                                                    </AxisX>
+                                                </asp:ChartArea>
+                                            </ChartAreas>
+                                            <Legends>
+                                                <asp:Legend Docking="Right" Name="Legend1">
+                                                </asp:Legend>
+                                            </Legends>
+                                        </asp:Chart>
+                                    </asp:Panel>
                                     <br />
                                     <div class="form-group row">
                                         <div class="col">
