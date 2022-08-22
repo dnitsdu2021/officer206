@@ -489,6 +489,26 @@
                  <div class="col-2"> <asp:Label ID="Label20" runat="server"   Text="General Report"></asp:Label></div>
                  <div class="col-4"><asp:FileUpload ID="flpRep" runat="server" CssClass="form-control form-control-sm" /></div>
              </div>
+             <asp:Label ID="Label58" runat="server" CssClass="text text-decoration-underline"  Text="REMARKS OF AREA ASSESSMENT BOARD (AAB)"></asp:Label>
+             <div class="form-group row">
+                <div class="col-4"><asp:FileUpload ID="FileUploadAAB" runat="server" CssClass="form-control form-control-sm" /></div>
+             </div><br />
+             <asp:Label ID="Label11" runat="server" CssClass="text text-decoration-underline"  Text="REMARKS OF NHQ ASSESSMENT BOARD (NHQ-AB)"></asp:Label>
+             <div class="form-group row">
+                <div class="col-4"><asp:FileUpload ID="FileUploadAABNHQ" runat="server" CssClass="form-control form-control-sm" /></div>
+             </div><br />
+              <asp:Label ID="Label53" runat="server" CssClass="text text-decoration-underline"  Text="REMARKS OF DIRECTOR GENERAL/CMDE VNF/DIRECTOR/CO VNF"></asp:Label>
+             <div class="form-group row">
+                <div class="col-4"><asp:FileUpload ID="FileUploadVNF" runat="server" CssClass="form-control form-control-sm" /></div>
+             </div><br />
+             <asp:Label ID="Label59" runat="server" CssClass="text text-decoration-underline"  Text="REMARKS OF THE COMMANDER OF THE NAVY/ CHIEF OF STAFF"></asp:Label>
+             <div class="form-group row">
+                <div class="col-4"><asp:FileUpload ID="FileUploadCofN" runat="server" CssClass="form-control form-control-sm" /></div>
+             </div><br />
+
+
+
+
                             </fieldset>
                         </asp:Panel>
                     </div>
@@ -496,6 +516,7 @@
             </div>
     </div>
       <br />
+
       <div class="form-group row">
                  <div class="col-8" style="text-align:right"><asp:Label ID="lblMessage" runat="server"/></div>
                  <div class="col-2">

@@ -530,13 +530,15 @@ namespace Officer206Analyzer
                     //cmd.Parameters.Add("@createby", SqlDbType.VarChar).Value = "Sam";
                     cmd.Parameters.Add("@createby", SqlDbType.VarChar).Value = Session["nic"].ToString();
 
-                    if (flpInt.HasFile && flpRep.HasFile)
+                    // Modified by NRT3353 FileUploadAAB onwords
+                    if (flpInt.HasFile && flpRep.HasFile && FileUploadAAB.HasFile && FileUploadAABNHQ.HasFile && FileUploadCofN.HasFile || FileUploadVNF.HasFile)
                     {
                         try
                         {
-                            if ((flpInt.PostedFile.ContentType == "application/pdf" || flpInt.PostedFile.ContentType == "image/jpeg") && (flpRep.PostedFile.ContentType == "application/pdf" || flpRep.PostedFile.ContentType == "image/jpeg"))
+                            //// Modified by NRT3353 FileUploadAAB onwords
+                            if ((flpInt.PostedFile.ContentType == "application/pdf" || flpInt.PostedFile.ContentType == "image/jpeg") && (flpRep.PostedFile.ContentType == "application/pdf" || flpRep.PostedFile.ContentType == "image/jpeg") && (FileUploadAAB.PostedFile.ContentType == "application/pdf" || FileUploadAAB.PostedFile.ContentType == "image/jpeg") && (FileUploadAABNHQ.PostedFile.ContentType == "application/pdf" || FileUploadAABNHQ.PostedFile.ContentType == "image/jpeg") && (FileUploadCofN.PostedFile.ContentType == "application/pdf" || FileUploadCofN.PostedFile.ContentType == "image/jpeg") || (FileUploadVNF.PostedFile.ContentType == "application/pdf" || FileUploadVNF.PostedFile.ContentType == "image/jpeg"))
                             {
-                                if (flpRep.PostedFile.ContentLength < 5120000 && flpInt.PostedFile.ContentLength < 5120000)
+                                if (flpRep.PostedFile.ContentLength < 5120000 && flpInt.PostedFile.ContentLength < 5120000 && FileUploadAAB.PostedFile.ContentLength < 5120000 && FileUploadAABNHQ.PostedFile.ContentLength < 5120000 && FileUploadCofN.PostedFile.ContentLength < 5120000 || FileUploadVNF.PostedFile.ContentLength < 5120000)
                                 {
 
                                     string filename = Path.GetFileName(flpInt.FileName);
@@ -564,14 +566,36 @@ namespace Officer206Analyzer
                                     //uodateImage_PTable(ProfileImage);
                                     //StatusLabel.Text = "Upload status: Image Successfully Uploaded!";
                                     //StatusLabel.ForeColor = System.Drawing.Color.Green;
-
-
-
-
-
+                                                                        // Get Details of ABB
+                                    string filenameAAB = Path.GetFileName(FileUploadAAB.FileName);
+                                    string extensionAAB = Path.GetExtension(FileUploadAAB.PostedFile.FileName);
+                                    string imgnamAAB = txtOfficialNumberOfApplicant.Text + "_" + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.Text.ToString()).ToString("yyyy_MM_dd") + "_ABB" + extension;
+                                    FileUploadAAB.SaveAs(Server.MapPath("~/CommentsABB/" + imgnamAAB));
+                                    ABBComment = "~/CommentsABB/" + imgnamAAB;
+                                    //Get Details of ABB-NHQ
+                                    string filenameAABNHQ = Path.GetFileName(FileUploadAABNHQ.FileName);
+                                    string extensionAABNHQ = Path.GetExtension(FileUploadAABNHQ.PostedFile.FileName);
+                                    string imgnamAABNHQ = txtOfficialNumberOfApplicant.Text + "_" + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.Text.ToString()).ToString("yyyy_MM_dd") + "_ABBNHQ" + extension;
+                                    FileUploadAABNHQ.SaveAs(Server.MapPath("~/CommentsABBNHQ/" + imgnamAABNHQ));
+                                    ABBNHQComment = "~/CommentsABBNHQ/" + imgnamAABNHQ;
+                                    //Get Details of CofN
+                                    string filenameCofN = Path.GetFileName(FileUploadCofN.FileName);
+                                    string extensionCofN = Path.GetExtension(FileUploadCofN.PostedFile.FileName);
+                                    string imgnamCofN = txtOfficialNumberOfApplicant.Text + "_" + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.Text.ToString()).ToString("yyyy_MM_dd") + "_CofN" + extension;
+                                    FileUploadCofN.SaveAs(Server.MapPath("~/CommentsCofN/" + imgnamCofN));
+                                    CofNComment = "~/CommentsCofN/" + imgnamCofN;
+                                    //Get Details of VNF
+                                    string filenameVNF = Path.GetFileName(FileUploadVNF.FileName);
+                                    string extensionVNF = Path.GetExtension(FileUploadVNF.PostedFile.FileName);
+                                    string imgnamVNF = txtOfficialNumberOfApplicant.Text + "_" + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.Text.ToString()).ToString("yyyy_MM_dd") + "_VNF" + extension;
+                                    FileUploadVNF.SaveAs(Server.MapPath("~/CommentsVNF/" + imgnamVNF));
+                                    VNFComment = "~/CommentsVNF/" + imgnamVNF;
                                     cmd.Parameters.Add("@IntCommentsPath", SqlDbType.VarChar).Value = IntComment;
                                     cmd.Parameters.Add("@RepommentPath", SqlDbType.VarChar).Value = RepComment;
-
+                                    cmd.Parameters.Add("@ABBCommentPath", SqlDbType.VarChar).Value = ABBComment;
+                                    cmd.Parameters.Add("@ABBNHQCommentPath", SqlDbType.VarChar).Value = ABBNHQComment;
+                                    cmd.Parameters.Add("@CofNCommentPath", SqlDbType.VarChar).Value = CofNComment;
+                                    cmd.Parameters.Add("@VNFCommentPath", SqlDbType.VarChar).Value = VNFComment;
                                     using (var _ = new LogOperation("{0} user has inserted 206 data for official number {1}", new object[] { Session["email"].ToString(), txtOfficialNumberOfApplicant.Text }, new DbLogger(new AccessLog(Session)))) ;
                                     cmd.ExecuteNonQuery();
                                     lblMessage.Text = "Save Success";
@@ -1277,5 +1301,10 @@ namespace Officer206Analyzer
         //    }
         //    return true;
         //}
+
+        public string ABBComment { get; set; }
+        public string ABBNHQComment { get; set; }
+        public string CofNComment { get; set; }
+        public string VNFComment { get; set; }
     }
 }
