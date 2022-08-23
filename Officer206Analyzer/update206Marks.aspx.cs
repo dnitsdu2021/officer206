@@ -580,7 +580,7 @@ namespace Officer206Analyzer
 
 
 
-                            if (flpInt.HasFile || flpRep.HasFile)
+                            if (flpInt.HasFile || flpRep.HasFile || FileUploadABB)// ||FileUploadAAB)
                             {
                                 try
                                 {
@@ -645,15 +645,12 @@ namespace Officer206Analyzer
                                             //StatusLabel.ForeColor = System.Drawing.Color.Green;
 
 
-
-
-
-                                           
-
                                             cmd.Parameters.Add("@RepommentPath", SqlDbType.VarChar).Value = RepComment;
 
                                             
                                         }
+
+
                                         else
                                         {
                                             lblMessage.Text = "Upload status: The file has to be less than 5mb!";
@@ -682,6 +679,15 @@ namespace Officer206Analyzer
                                     //StatusLabel2.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
                                 }
                             }
+
+                                //// Modified by NRT3353
+
+
+
+
+                                /////
+
+
                             else
                             {
 
