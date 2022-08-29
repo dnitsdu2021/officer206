@@ -718,6 +718,57 @@ namespace Officer206Analyzer
                     hyplink2.Target = "_blank";
                     item2["RO_Comments"].Controls.Add(hyplink2);
                 }
+            // NRT3353
+
+                if (e.Item is GridDataItem)
+                {
+
+                    GridDataItem item3 = (GridDataItem)e.Item;
+                    HyperLink hyplink3 = new HyperLink();
+                    hyplink3.ID = "ABB_Comments";
+                    hyplink3.Text = item3["ABB_Comments"].Text;
+                    hyplink3.NavigateUrl = item3["ABBCommentPath"].Text.Replace("&nbsp;", " "); ;
+                    hyplink3.Attributes.Add("onClick", "popup();");
+                    hyplink3.Target = "_blank";
+                    item3["ABB_Comments"].Controls.Add(hyplink3);
+                }
+
+                if (e.Item is GridDataItem)
+                {
+
+                    GridDataItem item4 = (GridDataItem)e.Item;
+                    HyperLink hyplink4 = new HyperLink();
+                    hyplink4.ID = "NHQ_AB_Comments";
+                    hyplink4.Text = item4["NHQ_AB_Comments"].Text;
+                    hyplink4.NavigateUrl = item4["ABBNHQCommentPath"].Text.Replace("&nbsp;", " "); ;
+                    hyplink4.Attributes.Add("onClick", "popup();");
+                    hyplink4.Target = "_blank";
+                    item4["NHQ_AB_Comments"].Controls.Add(hyplink4);
+                }
+                if (e.Item is GridDataItem)
+                {
+
+                    GridDataItem item5 = (GridDataItem)e.Item;
+                    HyperLink hyplink5 = new HyperLink();
+                    hyplink5.ID = "VNF_Comments";
+                    hyplink5.Text = item5["VNF_Comments"].Text;
+                    hyplink5.NavigateUrl = item5["VNFCommentPath"].Text.Replace("&nbsp;", " "); ;
+                    hyplink5.Attributes.Add("onClick", "popup();");
+                    hyplink5.Target = "_blank";
+                    item5["VNF_Comments"].Controls.Add(hyplink5);
+                }
+                if (e.Item is GridDataItem)
+                {
+
+                    GridDataItem item6 = (GridDataItem)e.Item;
+                    HyperLink hyplink6 = new HyperLink();
+                    hyplink6.ID = "COFN_Comments";
+                    hyplink6.Text = item6["COFN_Comments"].Text;
+                    hyplink6.NavigateUrl = item6["CofNCommentPath"].Text.Replace("&nbsp;", " "); ;
+                    hyplink6.Attributes.Add("onClick", "popup();");
+                    hyplink6.Target = "_blank";
+                    item6["COFN_Comments"].Controls.Add(hyplink6);
+                }
             
         }
         protected void grdReport2_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)

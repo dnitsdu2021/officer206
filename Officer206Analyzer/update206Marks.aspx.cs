@@ -361,18 +361,14 @@ namespace Officer206Analyzer
                             cmd.Parameters.Add("@DutyType", SqlDbType.VarChar).Value = ddlDutyType.SelectedItem.Text.ToString();
                             cmd.Parameters.Add("@TotalMark", SqlDbType.VarChar).Value = obj.Encrypt(txtMarks.Text.ToString());
 
-                            if (CheckBox1.Checked == false) 
+                            if (CheckBox1.Checked == false)
                             {
                                 if (txtInitiatingOfficerName.Text.Length > 0)
                                 {
-
-
                                     cmd.Parameters.Add("@InitiatingOfficerOfficialNumber", SqlDbType.Int).Value = int.Parse(txtInitiatingOfficerOfficialNumber.Text.ToString());
                                     cmd.Parameters.Add("@InitiatingOfficerServiceType", SqlDbType.VarChar).Value = ddlInitiatingOfficerServiceType.SelectedItem.Text.ToString();
                                     cmd.Parameters.Add("@InitiatingOfficerName", SqlDbType.VarChar).Value = txtInitiatingOfficerName.Text.ToString();
                                     cmd.Parameters.Add("@InitiatingOfficerOtherService", SqlDbType.VarChar).Value = "F";
-
-
 
                                     if (REPORTINGOFFICERDetails.Tables.Count > 0)
                                     {
@@ -387,7 +383,6 @@ namespace Officer206Analyzer
                                             cmd.Parameters.Add("@InitiatingOfficerBranch", SqlDbType.VarChar).Value = lblIntBranch.Text;
                                             cmd.Parameters.Add("@InitiatingOfficerRank", SqlDbType.VarChar).Value = lblIntRank.Text;
 
-
                                         }
                                     }
 
@@ -396,7 +391,6 @@ namespace Officer206Analyzer
 
                                         cmd.Parameters.Add("@InitiatingOfficerBranch", SqlDbType.VarChar).Value = lblIntBranch.Text;
                                         cmd.Parameters.Add("@InitiatingOfficerRank", SqlDbType.VarChar).Value = lblIntRank.Text;
-
 
                                     }
                                 }
@@ -409,9 +403,7 @@ namespace Officer206Analyzer
                                     cmd.Parameters.Add("@InitiatingOfficerRank", SqlDbType.VarChar).Value = null;
                                     cmd.Parameters.Add("@InitiatingOfficerOtherService", SqlDbType.VarChar).Value = "F";
 
-                                   
-                                
-                                
+
                                 }
                             }
 
@@ -428,7 +420,7 @@ namespace Officer206Analyzer
                                     cmd.Parameters.Add("@InitiatingOfficerRank", SqlDbType.VarChar).Value = null;
                                     cmd.Parameters.Add("@InitiatingOfficerOtherService", SqlDbType.VarChar).Value = "T";
                                 }
-                                else 
+                                else
                                 {
 
                                     cmd.Parameters.Add("@InitiatingOfficerOfficialNumber", SqlDbType.Int).Value = null;
@@ -437,24 +429,16 @@ namespace Officer206Analyzer
                                     cmd.Parameters.Add("@InitiatingOfficerBranch", SqlDbType.VarChar).Value = null;
                                     cmd.Parameters.Add("@InitiatingOfficerRank", SqlDbType.VarChar).Value = null;
                                     cmd.Parameters.Add("@InitiatingOfficerOtherService", SqlDbType.VarChar).Value = "T";
-                                
-                                
+
+
                                 }
-
-
 
                             }
 
-
-                            if (CheckBox2.Checked == false) 
+                            if (CheckBox2.Checked == false)
                             {
                                 if (txtReportingOfficerName.Text.Length > 0)
-                               
                                 {
-
-
-
-
                                     cmd.Parameters.Add("@ReportingOfficerOfficialNumber", SqlDbType.Int).Value = int.Parse(txtReportingOfficerOfficialNumber.Text.ToString());
                                     cmd.Parameters.Add("@ReportingOfficerServiceType", SqlDbType.VarChar).Value = ddlReportingOfficerServiceType.SelectedItem.Text.ToString();
                                     cmd.Parameters.Add("@ReportingOfficerName", SqlDbType.VarChar).Value = txtReportingOfficerName.Text.ToString();
@@ -473,7 +457,6 @@ namespace Officer206Analyzer
                                             cmd.Parameters.Add("@ReportingOfficerBranch", SqlDbType.VarChar).Value = lblRepBranch.Text;
                                             cmd.Parameters.Add("@ReportingOfficerRank", SqlDbType.VarChar).Value = lblRepRank.Text;
 
-
                                         }
                                     }
 
@@ -483,10 +466,9 @@ namespace Officer206Analyzer
                                         cmd.Parameters.Add("@ReportingOfficerBranch", SqlDbType.VarChar).Value = lblRepBranch.Text;
                                         cmd.Parameters.Add("@ReportingOfficerRank", SqlDbType.VarChar).Value = lblRepRank.Text;
 
-
                                     }
                                 }
-                                else 
+                                else
                                 {
                                     cmd.Parameters.Add("@ReportingOfficerOfficialNumber", SqlDbType.Int).Value = null;
                                     cmd.Parameters.Add("@ReportingOfficerServiceType", SqlDbType.VarChar).Value = null;
@@ -495,9 +477,6 @@ namespace Officer206Analyzer
                                     cmd.Parameters.Add("@ReportingOfficerRank", SqlDbType.VarChar).Value = null;
                                     cmd.Parameters.Add("@ReportingOfficerOtherService", SqlDbType.VarChar).Value = "F";
 
-                                   
-
-                                
                                 }
                             }
 
@@ -514,7 +493,7 @@ namespace Officer206Analyzer
                                     cmd.Parameters.Add("@ReportingOfficerOtherService", SqlDbType.VarChar).Value = "T";
 
                                 }
-                                else 
+                                else
                                 {
                                     cmd.Parameters.Add("@ReportingOfficerOfficialNumber", SqlDbType.Int).Value = null;
                                     cmd.Parameters.Add("@ReportingOfficerServiceType", SqlDbType.VarChar).Value = null;
@@ -522,8 +501,7 @@ namespace Officer206Analyzer
                                     cmd.Parameters.Add("@ReportingOfficerBranch", SqlDbType.VarChar).Value = null;
                                     cmd.Parameters.Add("@ReportingOfficerRank", SqlDbType.VarChar).Value = null;
                                     cmd.Parameters.Add("@ReportingOfficerOtherService", SqlDbType.VarChar).Value = "T";
-                                
-                                
+
                                 }
                             }
 
@@ -577,16 +555,13 @@ namespace Officer206Analyzer
 
                             }
 
-
-
-
-                            if (flpInt.HasFile || flpRep.HasFile || FileUploadABB)// ||FileUploadAAB)
+                            if (flpInt.HasFile || flpRep.HasFile || FileUploadAAB.HasFile || FileUploadAABNHQ.HasFile || FileUploadVNF.HasFile || FileUploadCofN.HasFile)
                             {
                                 try
                                 {
                                     if ((flpInt.PostedFile.ContentType == "application/pdf" || flpInt.PostedFile.ContentType == "image/jpeg"))
                                     {
-                                        if ( flpInt.PostedFile.ContentLength < 5120000)
+                                        if (flpInt.PostedFile.ContentLength < 5120000)
                                         {
 
                                             string filename = Path.GetFileName(flpInt.FileName);
@@ -597,15 +572,9 @@ namespace Officer206Analyzer
                                             flpInt.SaveAs(Server.MapPath("~/CommentsIniOfficer/" + imgnam));
                                             IntComment = "~/CommentsIniOfficer/" + imgnam;
 
-                                           
-
-
-
-
                                             cmd.Parameters.Add("@IntCommentsPath", SqlDbType.VarChar).Value = IntComment;
 
-                                          
-                                           
+
                                         }
                                         else
                                         {
@@ -617,13 +586,11 @@ namespace Officer206Analyzer
                                     else
                                     {
                                         cmd.Parameters.Add("@IntCommentsPath", SqlDbType.VarChar).Value = PDFPATH;
-                                        
+
                                         lblMessage.Text = "Upload status: Only pdf files are accepted !";
                                         lblMessage.ForeColor = System.Drawing.Color.Red;
                                         //StatusLabel2.Text = "Upload status: Only JPEG,PNG files are accepted!";
                                     }
-
-
 
 
                                     if ((flpRep.PostedFile.ContentType == "application/pdf" || flpRep.PostedFile.ContentType == "image/jpeg"))
@@ -631,7 +598,6 @@ namespace Officer206Analyzer
                                         if (flpRep.PostedFile.ContentLength < 5120000)
                                         {
 
-                                           
                                             string filename2 = Path.GetFileName(flpRep.FileName);
                                             string extension2 = Path.GetExtension(flpRep.PostedFile.FileName);
                                             string imgnam2 = txtOfficialNumberOfApplicant.Text + "_" + txtReportingOfficerOfficialNumber.Text + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.SelectedDate.ToString()).ToString("yyyy_MM_dd") + extension2;
@@ -647,7 +613,6 @@ namespace Officer206Analyzer
 
                                             cmd.Parameters.Add("@RepommentPath", SqlDbType.VarChar).Value = RepComment;
 
-                                            
                                         }
 
 
@@ -658,32 +623,159 @@ namespace Officer206Analyzer
                                             //StatusLabel2.Text = " Upload status: The file has to be less than 5mb!";
                                         }
                                     }
+
                                     else
                                     {
 
-                                       
                                         cmd.Parameters.Add("@RepommentPath", SqlDbType.VarChar).Value = PDFPATH2;
                                         lblMessage.Text = "Upload status: Only pdf files are accepted !";
                                         lblMessage.ForeColor = System.Drawing.Color.Red;
                                         //StatusLabel2.Text = "Upload status: Only JPEG,PNG files are accepted!";
                                     }
 
+                                    //NRT3353 ABB
+                                    if ((FileUploadAAB.PostedFile.ContentType == "application/pdf" || FileUploadAAB.PostedFile.ContentType == "image/jpeg"))
+                                    {
+                                        if (FileUploadAAB.PostedFile.ContentLength < 5120000)
+                                        {
+
+                                            string filenameAAB = Path.GetFileName(FileUploadAAB.FileName);
+                                            string extensionAAB = Path.GetExtension(FileUploadAAB.PostedFile.FileName);
+                                            string imgnamAAB = txtOfficialNumberOfApplicant.Text + "_" + txtInitiatingOfficerOfficialNumber.Text + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.SelectedDate.ToString()).ToString("yyyy_MM_dd") + extension;
+                                            FileUploadAAB.SaveAs(Server.MapPath("~/CommentsABB/" + imgnamAAB));
+                                            ABBComment = "~/CommentsABB/" + imgnamAAB;
+
+                                            cmd.Parameters.Add("@ABBCommentPath ", SqlDbType.VarChar).Value = ABBComment;
+
+                                        }
+                                        else
+                                        {
+                                            lblMessage.Text = "Upload status: The file has to be less than 5mb!";
+                                            lblMessage.ForeColor = System.Drawing.Color.Red;
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        cmd.Parameters.Add("@ABBCommentPath", SqlDbType.VarChar).Value = PDFPATH;
+
+                                        lblMessage.Text = "Upload status: Only pdf files are accepted !";
+                                        lblMessage.ForeColor = System.Drawing.Color.Red;
+
+                                    }
+                                    //ABBNHQCommentPath
+                                    if ((FileUploadAABNHQ.PostedFile.ContentType == "application/pdf" || FileUploadAABNHQ.PostedFile.ContentType == "image/jpeg"))
+                                    {
+                                        if (FileUploadAABNHQ.PostedFile.ContentLength < 5120000)
+                                        {
+
+                                            string filenameAABNHQ = Path.GetFileName(FileUploadAABNHQ.FileName);
+                                            string extensionAABNHQ = Path.GetExtension(FileUploadAABNHQ.PostedFile.FileName);
+                                            string imgnamAABNHQ = txtOfficialNumberOfApplicant.Text + "_" + txtInitiatingOfficerOfficialNumber.Text + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.SelectedDate.ToString()).ToString("yyyy_MM_dd") + extension;
+                                            FileUploadAABNHQ.SaveAs(Server.MapPath("~/CommentsABBNHQ/" + imgnamAABNHQ));
+                                            ABBNHQComment = "~/CommentsABBNHQ/" + imgnamAABNHQ;
+
+                                            cmd.Parameters.Add("@ABBNHQCommentPath", SqlDbType.VarChar).Value = ABBNHQComment;
+
+                                        }
+                                        else
+                                        {
+                                            lblMessage.Text = "Upload status: The file has to be less than 5mb!";
+                                            lblMessage.ForeColor = System.Drawing.Color.Red;
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        cmd.Parameters.Add("@ABBNHQCommentPath", SqlDbType.VarChar).Value = PDFPATH;
+
+                                        lblMessage.Text = "Upload status: Only pdf files are accepted !";
+                                        lblMessage.ForeColor = System.Drawing.Color.Red;
+
+                                    }
+                                    //// VNF
+                                    if ((FileUploadVNF.PostedFile.ContentType == "application/pdf" || FileUploadVNF.PostedFile.ContentType == "image/jpeg"))
+                                    {
+                                        if (FileUploadVNF.PostedFile.ContentLength < 5120000)
+                                        {
+
+                                            string filenameVNF = Path.GetFileName(FileUploadVNF.FileName);
+                                            string extensionVNF = Path.GetExtension(FileUploadVNF.PostedFile.FileName);
+                                            string imgnamVNF = txtOfficialNumberOfApplicant.Text + "_" + txtInitiatingOfficerOfficialNumber.Text + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.SelectedDate.ToString()).ToString("yyyy_MM_dd") + extension;
+                                            FileUploadVNF.SaveAs(Server.MapPath("~/CommentsVNF/" + imgnamVNF));
+                                            VNFComment = "~/CommentsVNF/" + imgnamVNF;
+
+                                            cmd.Parameters.Add("@VNFCommentPath", SqlDbType.VarChar).Value = VNFComment;
+
+                                        }
+                                        else
+                                        {
+                                            lblMessage.Text = "Upload status: The file has to be less than 5mb!";
+                                            lblMessage.ForeColor = System.Drawing.Color.Red;
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        cmd.Parameters.Add("@VNFCommentPath", SqlDbType.VarChar).Value = PDFPATH;
+
+                                        lblMessage.Text = "Upload status: Only pdf files are accepted !";
+                                        lblMessage.ForeColor = System.Drawing.Color.Red;
+
+                                    }
+
+                                    ////Get Details of COFN
+                                    if ((FileUploadCofN.PostedFile.ContentType == "application/pdf" || FileUploadCofN.PostedFile.ContentType == "image/jpeg"))
+                                    {
+                                        if (FileUploadCofN.PostedFile.ContentLength < 5120000)
+                                        {
+
+                                            string filenameCofN = Path.GetFileName(FileUploadCofN.FileName);
+                                            string extensionCofN = Path.GetExtension(FileUploadCofN.PostedFile.FileName);
+                                            string imgnamCofN = txtOfficialNumberOfApplicant.Text + "_" + txtInitiatingOfficerOfficialNumber.Text + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.SelectedDate.ToString()).ToString("yyyy_MM_dd") + extension;
+                                            FileUploadCofN.SaveAs(Server.MapPath("~/CommentsCofN/" + imgnamCofN));
+                                            CofNComment = "~/CommentsVNF/" + imgnamCofN;
+
+                                            cmd.Parameters.Add("@CofNCommentPath", SqlDbType.VarChar).Value = imgnamCofN;
+
+                                        }
+                                        else
+                                        {
+                                            lblMessage.Text = "Upload status: The file has to be less than 5mb!";
+                                            lblMessage.ForeColor = System.Drawing.Color.Red;
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        cmd.Parameters.Add("@CofNCommentPath", SqlDbType.VarChar).Value = PDFPATH;
+
+                                        lblMessage.Text = "Upload status: Only pdf files are accepted !";
+                                        lblMessage.ForeColor = System.Drawing.Color.Red;
+
+                                    }
+
+                                    //END NRT3353
+
+
+
                                     cmd.ExecuteNonQuery();
                                     lblMessage.Text = "Save Success";
                                     lblMessage.ForeColor = System.Drawing.Color.Green;
                                 }
+
                                 catch (Exception ex)
                                 {
                                     lblMessage.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
                                     lblMessage.ForeColor = System.Drawing.Color.Red;
                                     //StatusLabel2.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
                                 }
-                            }
+
 
                                 //// Modified by NRT3353
 
 
-
+                            }
 
                                 /////
 
@@ -696,6 +788,10 @@ namespace Officer206Analyzer
 
                                 cmd.Parameters.Add("@IntCommentsPath", SqlDbType.VarChar).Value = PDFPATH;
                                 cmd.Parameters.Add("@RepommentPath", SqlDbType.VarChar).Value = PDFPATH2;
+                                cmd.Parameters.Add("@CofNCommentPath", SqlDbType.VarChar).Value = PDFPATH;
+                                cmd.Parameters.Add("@VNFCommentPath", SqlDbType.VarChar).Value = PDFPATH;
+                                cmd.Parameters.Add("@ABBNHQCommentPath", SqlDbType.VarChar).Value = PDFPATH;
+                                cmd.Parameters.Add("@ABBCommentPath", SqlDbType.VarChar).Value = PDFPATH;
 
                                 cmd.ExecuteNonQuery();
                                 lblMessage.Text = "Save Success";
@@ -704,8 +800,8 @@ namespace Officer206Analyzer
                             }
 
 
-
                         }
+
 
                         catch
                         {
@@ -731,7 +827,7 @@ namespace Officer206Analyzer
                 {
                     lblMessage.Text = "Enter Total Mark First";
                     lblMessage.ForeColor = System.Drawing.Color.Red;
-                   
+
                 }
 
             }
@@ -740,12 +836,15 @@ namespace Officer206Analyzer
                 txtTotal0.BackColor = Color.Red;
                 lblMessage.Text = "Total Not Equal";
                 lblMessage.ForeColor = System.Drawing.Color.Red;
-               
+
+
             }
 
             searchBut1_Click(null, null);
+            
+        
         }
-
+    
 
         
        
@@ -1777,5 +1876,18 @@ namespace Officer206Analyzer
             }
         }
         }
+
+        public string ABBComment { get; set; }
+
+        public string extension { get; set; }
+
+        public string ABBNHQComment { get; set; }
+
+        public string VNFComment { get; set; }
+
+        public string CofNComment { get; set; }
+
+
+
     }
 }

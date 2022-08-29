@@ -413,47 +413,77 @@
                                         </ItemTemplate>
                                     </telerik:GridTemplateColumn>--%>
                                         <telerik:GridBoundColumn DataField="TotalMark" FilterControlAltText="Filter TotalMark column" HeaderText="Nav206 Marks" UniqueName="TotalMark">
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn DataField="AssesmentPeriodOfNav206From" FilterControlAltText="Filter AssesmentPeriodOfNav206From column" HeaderText="Assesment Period" UniqueName="AssesmentPeriodOfNav206From">
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </telerik:GridBoundColumn>
                                         <%--<telerik:GridBoundColumn DataField="AssesmentPeriodOfNav206To" FilterControlAltText="Filter AssesmentPeriodOfNav206To column" Groupable="False" HeaderText="To" UniqueName="AssesmentPeriodOfNav206To">
                                     </telerik:GridBoundColumn>--%>
 
                                         <telerik:GridBoundColumn DataField="OccationOfNav206" FilterControlAltText="Filter OccationOfNav206 column" Groupable="False" HeaderText="Occation" UniqueName="OccationOfNav206">
+                                            <HeaderStyle HorizontalAlign="Center" Width="100px" />
                                         </telerik:GridBoundColumn>
 
                                         <telerik:GridBoundColumn DataField="DutyType" FilterControlAltText="Filter DutyType column" Groupable="False" HeaderText="DutyType" UniqueName="DutyType">
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </telerik:GridBoundColumn>
 
                                             <telerik:GridBoundColumn DataField="Sea_Performance" FilterControlAltText="Filter Sea_Performance column" Groupable="False" HeaderText="Sea Performance" UniqueName="Sea_Performance">
+                                                <HeaderStyle HorizontalAlign="Center" />
                                         </telerik:GridBoundColumn>
                                         
                                         <telerik:GridBoundColumn DataField="IOOFF" FilterControlAltText="Filter IOOFF column" Groupable="False" HeaderText="IO_Official No" UniqueName="IOOFF">
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn DataField="IONAME" FilterControlAltText="Filter IONAME column" Groupable="False" HeaderText="IO Name" UniqueName="IONAME">
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn DataField="IntCommentsPath" FilterControlAltText="Filter IntCommentsPath column" Groupable="False" HeaderText="IntCommentsPath" UniqueName="IntCommentsPath" Visible="false">
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn DataField="IO_Comments" FilterControlAltText="Filter IO_Comments column" Groupable="False" HeaderText="IO_Comments" UniqueName="IO_Comments" Visible="true">
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn DataField="ROOFF" FilterControlAltText="Filter ROOFF column" Groupable="False" HeaderText="RO_Official No" UniqueName="ROOFF">
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn DataField="RONAME" FilterControlAltText="Filter RONAME column" Groupable="False" HeaderText="RO Name" UniqueName="RONAME">
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </telerik:GridBoundColumn>
                                         <telerik:GridBoundColumn DataField="RO_Comments" FilterControlAltText="Filter RO_Comments column" Groupable="False" HeaderText="RO_Comments" UniqueName="RO_Comments" Visible="true">
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </telerik:GridBoundColumn>
-                                         <telerik:GridBoundColumn DataField="ABB_Comments" FilterControlAltText="Filter ABB_Comments column" Groupable="False" HeaderText="SECTION IX 1" UniqueName="ABB_Comments" Visible="true">
+                                         <telerik:GridBoundColumn DataField="RepommentPath" FilterControlAltText="Filter RepommentPath column" Groupable="False" HeaderText="RepommentPath" UniqueName="RepommentPath" Visible="false">
+                                             <HeaderStyle HorizontalAlign="Center" />
+                                        </telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn DataField="ABB_Comments" FilterControlAltText="Filter ABB_Comments column" Groupable="False" HeaderText="SECTION IX 1" UniqueName="ABB_Comments" Visible="true">
+                                            <HeaderStyle HorizontalAlign="Center" />
+                                        </telerik:GridBoundColumn>
+                                         <telerik:GridBoundColumn DataField="ABBCommentPath" FilterControlAltText="Filter ABBCommentPath column" Groupable="False" HeaderText="SECTION IX 1" UniqueName="ABBCommentPath" Visible="false">
+                                             <HeaderStyle HorizontalAlign="Center" />
                                         </telerik:GridBoundColumn>
                                          <telerik:GridBoundColumn DataField="NHQ_AB_Comments" FilterControlAltText="Filter NHQ_AB_Comments column" Groupable="False" HeaderText="SECTION IX 2" UniqueName="NHQ_AB_Comments" Visible="true">
+                                             <HeaderStyle HorizontalAlign="Center" />
+                                        </telerik:GridBoundColumn>
+                                         <telerik:GridBoundColumn DataField="ABBNHQCommentPath" FilterControlAltText="Filter ABBNHQCommentPath column" Groupable="False" HeaderText="SECTION IX 2" UniqueName="ABBNHQCommentPath" Visible="false">
+                                             <HeaderStyle HorizontalAlign="Center" />
                                         </telerik:GridBoundColumn>
                                          <telerik:GridBoundColumn DataField="VNF_Comments" FilterControlAltText="Filter VNF_Comments column" Groupable="False" HeaderText="SECTION IX 3" UniqueName="VNF_Comments" Visible="true">
+                                             <HeaderStyle HorizontalAlign="Center" />
+                                        </telerik:GridBoundColumn>
+                                        <telerik:GridBoundColumn DataField="VNFCommentPath" FilterControlAltText="Filter VNFCommentPath column" Groupable="False" HeaderText="SECTION IX 2" UniqueName="VNFCommentPath" Visible="false">
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </telerik:GridBoundColumn>
                                           <telerik:GridBoundColumn DataField="COFN_Comments" FilterControlAltText="Filter COFN_Comments column" Groupable="False" HeaderText="SECTION X" UniqueName="COFN_Comments" Visible="true">
+                                              <HeaderStyle HorizontalAlign="Center" />
                                         </telerik:GridBoundColumn>
-                                        <telerik:GridBoundColumn DataField="RepommentPath" FilterControlAltText="Filter RepommentPath column" Groupable="False" HeaderText="RepommentPath" UniqueName="RepommentPath" Visible="false">
+                                        <telerik:GridBoundColumn DataField="CofNCommentPath" FilterControlAltText="Filter CofNCommentPath column" Groupable="False" HeaderText="SECTION IX 2" UniqueName="CofNCommentPath" Visible="false">
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </telerik:GridBoundColumn>
-                                        
                                          <telerik:GridBoundColumn DataField="remarks" FilterControlAltText="Filter remarks column" Groupable="False" HeaderText="Remarks" UniqueName="remarks" Visible="true" ItemStyle-Width="50px">
+                                             <HeaderStyle HorizontalAlign="Center" Width="200px" />
+                                             <ItemStyle Width="50px" />
                                         </telerik:GridBoundColumn>
                                     </Columns>
                                     <EditFormSettings>
@@ -472,7 +502,7 @@
             <div class="accordion-item">
                 <h4 class="accordion-header" id="headingSix">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                        #3 APPOINTMENTS                      #3 APPOINTMENTS</button>
+                        #3 APPOINTMENTS                      #3 APPOINTMENTS                      #3 APPOINTMENTS</button>
                 </h4>
                 <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix">
                     <div class="accordion-body">

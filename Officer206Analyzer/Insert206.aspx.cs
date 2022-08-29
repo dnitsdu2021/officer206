@@ -566,7 +566,8 @@ namespace Officer206Analyzer
                                     //uodateImage_PTable(ProfileImage);
                                     //StatusLabel.Text = "Upload status: Image Successfully Uploaded!";
                                     //StatusLabel.ForeColor = System.Drawing.Color.Green;
-                                                                        // Get Details of ABB
+                                                                        
+                                    // Get Details of ABB
                                     string filenameAAB = Path.GetFileName(FileUploadAAB.FileName);
                                     string extensionAAB = Path.GetExtension(FileUploadAAB.PostedFile.FileName);
                                     string imgnamAAB = txtOfficialNumberOfApplicant.Text + "_" + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.Text.ToString()).ToString("yyyy_MM_dd") + "_ABB" + extension;
@@ -590,6 +591,7 @@ namespace Officer206Analyzer
                                     string imgnamVNF = txtOfficialNumberOfApplicant.Text + "_" + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.Text.ToString()).ToString("yyyy_MM_dd") + "_VNF" + extension;
                                     FileUploadVNF.SaveAs(Server.MapPath("~/CommentsVNF/" + imgnamVNF));
                                     VNFComment = "~/CommentsVNF/" + imgnamVNF;
+
                                     cmd.Parameters.Add("@IntCommentsPath", SqlDbType.VarChar).Value = IntComment;
                                     cmd.Parameters.Add("@RepommentPath", SqlDbType.VarChar).Value = RepComment;
                                     cmd.Parameters.Add("@ABBCommentPath", SqlDbType.VarChar).Value = ABBComment;
@@ -630,6 +632,10 @@ namespace Officer206Analyzer
 
                         cmd.Parameters.Add("@IntCommentsPath", SqlDbType.VarChar).Value = null;
                         cmd.Parameters.Add("@RepommentPath", SqlDbType.VarChar).Value = null;
+                        cmd.Parameters.Add("@ABBCommentPath", SqlDbType.VarChar).Value = null;
+                        cmd.Parameters.Add("@ABBNHQCommentPath", SqlDbType.VarChar).Value = null;
+                        cmd.Parameters.Add("@CofNCommentPath", SqlDbType.VarChar).Value = null;
+                        cmd.Parameters.Add("@VNFCommentPath", SqlDbType.VarChar).Value = null;
 
                         cmd.ExecuteNonQuery();
                         lblMessage.Text = "Save Success";
