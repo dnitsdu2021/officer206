@@ -360,6 +360,7 @@ namespace Officer206Analyzer
 
                             cmd.Parameters.Add("@DutyType", SqlDbType.VarChar).Value = ddlDutyType.SelectedItem.Text.ToString();
                             cmd.Parameters.Add("@TotalMark", SqlDbType.VarChar).Value = obj.Encrypt(txtMarks.Text.ToString());
+                            cmd.Parameters.Add("@remarks", SqlDbType.VarChar).Value = txtremarks.Text.ToString();
 
                             if (CheckBox1.Checked == false)
                             {
@@ -1416,6 +1417,7 @@ namespace Officer206Analyzer
                     txtAssesmentPeriodOfNav206To.SelectedDate = DateTime.Parse(MainDetailsLoad.Tables[0].Rows[0]["To"].ToString());
                    
                     txtMarks.Text = obj.Decrypt(MainDetailsLoad.Tables[0].Rows[0]["Marks"].ToString());
+                    txtremarks.Text = MainDetailsLoad.Tables[0].Rows[0]["remarks"].ToString();
 
                     txtGeneral.Text = obj.Decrypt(MainDetailsLoad.Tables[2].Rows[0]["General"].ToString());
                     txtInitiative.Text = obj.Decrypt(MainDetailsLoad.Tables[2].Rows[0]["Initiative"].ToString());
