@@ -114,8 +114,8 @@ namespace Officer206Analyzer
                 nicNo = dtlogindetails.Rows[0]["Nic"].ToString();
                 saveOTP(numberAsString, nicNo);
                 Task.Run(async()=> await sendSMS(mobileNo, "Your%20OTP%20is%20" + numberAsString));
-                
 
+                Response.Redirect("OTPVarify.aspx");
 
 
                 //if (mobileNo[0].ToString() == "0" && mobileNo.Length == 10)
@@ -230,36 +230,39 @@ namespace Officer206Analyzer
                 //// Releases the resources of the response.
                 //myHttpWebResponse.Close();
 
-                try
-                {
+            
                     var handler = new HttpClientHandler();
                         //handler.ServerCertificateCustomValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
                     var httpClient = new HttpClient(handler);
                     
                     var response = await httpClient.GetAsync(url);
                     response.EnsureSuccessStatusCode();
+                    
                 }
                 catch (Exception ex)
                 {
                     // show error;
+                    Console.WriteLine("\r\nWebException Raised. The following error occured : {0}", ex.Message);
                 }
                     
 
-            }
-            catch (WebException e)
-            {
-                Console.WriteLine("\r\nWebException Raised. The following error occured : {0}", e.Status);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("\nThe following Exception was raised : {0}", e.Message);
-            }
+            //}
+            //catch (WebException e)
+            //{
+            //    Console.WriteLine("\r\nWebException Raised. The following error occured : {0}", e.Status);
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine("\nThe following Exception was raised : {0}", e.Message);
+            //}
 
 
             //Response.Redirect(url,true);
 
             //Response.Redirect("Insert206.aspx");
-             Response.Redirect("OTPVarify.aspx");
+
+         
+             
         }
 
 

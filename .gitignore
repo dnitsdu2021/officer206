@@ -370,3 +370,5 @@ MigrationBackup/
 *.ini
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp
+Officer206Analyzer/Officer206Analyzer.csproj.user
+Officer206Analyzer/Officer206Analyzer.v12.suo
