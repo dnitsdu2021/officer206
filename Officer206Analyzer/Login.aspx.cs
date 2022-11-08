@@ -6,8 +6,10 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -19,7 +21,8 @@ namespace Officer206Analyzer
         string constr = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
 
-
+        // HttpClient is intended to be instantiated once per application, rather than per-use. See Remarks.
+        static readonly HttpClient client = new HttpClient();
 
         string numberAsString = "";
         string mobileNo = "";
@@ -110,7 +113,8 @@ namespace Officer206Analyzer
                 string sess = Session["nic"] as string;
                 nicNo = dtlogindetails.Rows[0]["Nic"].ToString();
                 saveOTP(numberAsString, nicNo);
-                sendSMS(mobileNo, "Your%20OTP%20is%20" + numberAsString);
+                Task.Run(async()=> await sendSMS(mobileNo, "Your%20OTP%20is%20" + numberAsString));
+                
 
 
 
@@ -186,23 +190,61 @@ namespace Officer206Analyzer
             }
         }
 
-        public void sendSMS(string mobileNo, string msg)
+        public async Task sendSMS(string mobileNo, string msg)
         {
 
 
             try
             {
                 string url = "https://richcommunication.dialog.lk/api/sms/inline/send?q=c00d0d6bb6a0b79&destination=" + mobileNo + "&message=" + msg + "&from=SLN%20-%20DC";
-                // Creates an HttpWebRequest for the specified URL. 
-                HttpWebRequest myHttpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-                // Sends the HttpWebRequest and waits for a response.
-                HttpWebResponse myHttpWebResponse = (HttpWebResponse)myHttpWebRequest.GetResponse();
-                if (myHttpWebResponse.StatusCode == HttpStatusCode.OK)
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Record Inserted Successfully')", true);
-                Console.WriteLine("\r\nResponse Status Code is OK and StatusDescription is: {0}",
-                    myHttpWebResponse.StatusDescription);
-                // Releases the resources of the response.
-                myHttpWebResponse.Close();
+
+
+                System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+
+
+    //            // Call asynchronous network methods in a try/catch block to handle exceptions.
+    //try
+    //{
+    //    using HttpResponseMessage response = await client.GetAsync("http://www.contoso.com/");
+    //    response.EnsureSuccessStatusCode();
+    //    string responseBody = await response.Content.ReadAsStringAsync();
+    //    // Above three lines can be replaced with new helper method below
+    //    // string responseBody = await client.GetStringAsync(uri);
+
+    //    Console.WriteLine(responseBody);
+    //}
+    //catch (HttpRequestException e)
+    //{
+    //    Console.WriteLine("\nException Caught!");
+    //    Console.WriteLine("Message :{0} ", e.Message);
+    //}
+
+                //// Creates an HttpWebRequest for the specified URL. 
+                //HttpWebRequest myHttpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+                //// Sends the HttpWebRequest and waits for a response.
+                //HttpWebResponse myHttpWebResponse = (HttpWebResponse)myHttpWebRequest.GetResponse();
+                //if (myHttpWebResponse.StatusCode == HttpStatusCode.OK)
+                //    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Record Inserted Successfully')", true);
+                //Console.WriteLine("\r\nResponse Status Code is OK and StatusDescription is: {0}",
+                //    myHttpWebResponse.StatusDescription);
+                //// Releases the resources of the response.
+                //myHttpWebResponse.Close();
+
+                try
+                {
+                    var handler = new HttpClientHandler();
+                        //handler.ServerCertificateCustomValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+                    var httpClient = new HttpClient(handler);
+                    
+                    var response = await httpClient.GetAsync(url);
+                    response.EnsureSuccessStatusCode();
+                }
+                catch (Exception ex)
+                {
+                    // show error;
+                }
+                    
+
             }
             catch (WebException e)
             {
@@ -219,5 +261,7 @@ namespace Officer206Analyzer
             //Response.Redirect("Insert206.aspx");
              Response.Redirect("OTPVarify.aspx");
         }
+
+
     }
 }
