@@ -34,7 +34,7 @@ namespace Officer206Analyzer
             {
 
                 Session["nic"] = "";
-
+                lblMessage.Text = "";
 
             }
         }
@@ -99,21 +99,31 @@ namespace Officer206Analyzer
                 adpt.Fill(dtlogindetails);
 
 
+                if (dtlogindetails.Rows.Count !=0)
+                {
+                    DoWork();
+
+                    mobileNo = dtlogindetails.Rows[0]["ContactNo"].ToString();
+
+                    Session["nic"] = dtlogindetails.Rows[0]["Nic"].ToString();
+                    Session["NameWithInitials"] = dtlogindetails.Rows[0]["NameWithInitials"].ToString();
+                    Session["email"] = dtlogindetails.Rows[0]["Email"].ToString();
+                    Session["UserRole"] = dtlogindetails.Rows[0]["UserRole"].ToString();
+
+                    string sess = Session["nic"] as string;
+                    nicNo = dtlogindetails.Rows[0]["Nic"].ToString();
+                    saveOTP(numberAsString, nicNo);
+                    Task.Run(async () => await sendSMS(mobileNo, "Your%20OTP%20is%20" + numberAsString));
+                    Response.Redirect("OTPVarify.aspx", true);
+                }
+
+                else{
+
+                    lblMessage.Text = "Username or password incorrect !";
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
+                }
 
 
-                DoWork();
-
-                mobileNo = dtlogindetails.Rows[0]["ContactNo"].ToString();
-
-                Session["nic"] = dtlogindetails.Rows[0]["Nic"].ToString();
-                Session["NameWithInitials"] = dtlogindetails.Rows[0]["NameWithInitials"].ToString();
-                Session["email"] = dtlogindetails.Rows[0]["Email"].ToString();
-                Session["UserRole"] = dtlogindetails.Rows[0]["UserRole"].ToString();
-                
-                string sess = Session["nic"] as string;
-                nicNo = dtlogindetails.Rows[0]["Nic"].ToString();
-                saveOTP(numberAsString, nicNo);
-                Task.Run(async()=> await sendSMS(mobileNo, "Your%20OTP%20is%20" + numberAsString));
                 
 
 
@@ -259,7 +269,7 @@ namespace Officer206Analyzer
             //Response.Redirect(url,true);
 
             //Response.Redirect("Insert206.aspx");
-             Response.Redirect("OTPVarify.aspx");
+            
         }
 
 
