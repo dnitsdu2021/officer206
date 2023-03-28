@@ -19,8 +19,8 @@ namespace Officer206Analyzer
         private static DataSet MainDetails = new DataSet();
         private static DataSet INITIALOFFICERDetails = new DataSet();
         private static DataSet REPORTINGOFFICERDetails = new DataSet();
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
-        public static String strConnString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString());
+        public static String strConnString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
         public static String strConnString2 = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
 
         AccessLog accessLog;
@@ -112,7 +112,7 @@ namespace Officer206Analyzer
                     SqlDataAdapter sqlda = new SqlDataAdapter();
 
 
-                    string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+                    string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString();
                     SqlConnection con = new SqlConnection(ConnectionString);
                     SqlCommand cmd = new SqlCommand();
                     con.Open();
@@ -226,7 +226,7 @@ namespace Officer206Analyzer
                 SqlDataAdapter sqlda = new SqlDataAdapter();
 
 
-                string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+                string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString();
                 SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
@@ -270,7 +270,7 @@ namespace Officer206Analyzer
                 SqlDataAdapter sqlda = new SqlDataAdapter();
 
 
-                string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+                string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString();
                 SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();

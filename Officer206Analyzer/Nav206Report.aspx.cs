@@ -21,7 +21,7 @@ namespace Officer206Analyzer
         private static DataSet REPORTINGOFFICERDetails = new DataSet();
         private static string Val = "";
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString());
-        public static String strConnString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        public static String strConnString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
 
         AccessLog accessLog;
         string AccessPage;

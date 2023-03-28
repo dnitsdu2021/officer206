@@ -19,7 +19,7 @@ namespace Officer206Analyzer
     public partial class Login : System.Web.UI.Page
     {
         string constr = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString());
 
         // HttpClient is intended to be instantiated once per application, rather than per-use. See Remarks.
         static readonly HttpClient client = new HttpClient();
@@ -64,7 +64,7 @@ namespace Officer206Analyzer
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.CommandText = "ERPR_Save_OTP";
+                cmd.CommandText = "HRIS_Officer206Analyzer_Save_OTP";
                 cmd.Parameters.AddWithValue("@nicNo", nicNo);
                 cmd.Parameters.AddWithValue("@tempOTP", otp);
                 cmd.Parameters.AddWithValue("@createdTime", DateTime.Parse(System.DateTime.Now.ToString()));
