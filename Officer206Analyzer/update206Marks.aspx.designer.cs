@@ -7,7 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Web.UI.WebControls;
 namespace Officer206Analyzer {
     
     
@@ -59,6 +58,7 @@ namespace Officer206Analyzer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtoffnoMain;
+        protected global::System.Web.UI.WebControls.TextBox txtremarks;
         
         /// <summary>
         /// Label58 control.
@@ -392,7 +392,6 @@ namespace Officer206Analyzer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMarks;
-        protected global::System.Web.UI.WebControls.TextBox txtremarks;
         
         /// <summary>
         /// Label54 control.
@@ -1059,6 +1058,10 @@ namespace Officer206Analyzer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload flpRep;
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadAAB;
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadAABNHQ;
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadVNF;
+          protected global::System.Web.UI.WebControls.FileUpload FileUploadCofN;
         
         /// <summary>
         /// chkConfirm control.
@@ -1086,10 +1089,5 @@ namespace Officer206Analyzer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessage;
-
-        protected FileUpload FileUploadAAB;
-        protected FileUpload FileUploadAABNHQ;
-        protected FileUpload FileUploadVNF;
-        protected FileUpload FileUploadCofN;
     }
 }

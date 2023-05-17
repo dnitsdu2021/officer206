@@ -187,7 +187,7 @@ namespace Officer206Analyzer
                 SqlDataAdapter sqlda = new SqlDataAdapter();
 
 
-                string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+                string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString();
                 SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
@@ -230,7 +230,7 @@ namespace Officer206Analyzer
                 SqlDataAdapter sqlda = new SqlDataAdapter();
 
 
-                string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+                string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString();
                 SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();

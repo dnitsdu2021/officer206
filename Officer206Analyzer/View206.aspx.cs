@@ -718,7 +718,6 @@ namespace Officer206Analyzer
                     hyplink2.Target = "_blank";
                     item2["RO_Comments"].Controls.Add(hyplink2);
                 }
-            // NRT3353
 
                 if (e.Item is GridDataItem)
                 {
@@ -745,6 +744,7 @@ namespace Officer206Analyzer
                     hyplink4.Target = "_blank";
                     item4["NHQ_AB_Comments"].Controls.Add(hyplink4);
                 }
+
                 if (e.Item is GridDataItem)
                 {
 
@@ -757,6 +757,7 @@ namespace Officer206Analyzer
                     hyplink5.Target = "_blank";
                     item5["VNF_Comments"].Controls.Add(hyplink5);
                 }
+
                 if (e.Item is GridDataItem)
                 {
 
@@ -769,7 +770,6 @@ namespace Officer206Analyzer
                     hyplink6.Target = "_blank";
                     item6["COFN_Comments"].Controls.Add(hyplink6);
                 }
-            
         }
         protected void grdReport2_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {

@@ -19,8 +19,8 @@ namespace Officer206Analyzer
         private static DataSet MainDetails = new DataSet();
         private static DataSet INITIALOFFICERDetails = new DataSet();
         private static DataSet REPORTINGOFFICERDetails = new DataSet();
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
-        public static String strConnString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString());
+        public static String strConnString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
         public static String strConnString2 = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
 
         AccessLog accessLog;
@@ -112,13 +112,13 @@ namespace Officer206Analyzer
                     SqlDataAdapter sqlda = new SqlDataAdapter();
 
 
-                    string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+                    string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString();
                     SqlConnection con = new SqlConnection(ConnectionString);
                     SqlCommand cmd = new SqlCommand();
                     con.Open();
                     cmd.Parameters.Clear();
                     //cmd = new SqlCommand("HRIS_Officer206Analyzer_GetHrisData", con);
-                    cmd = new SqlCommand("HRIS_Officer206Analyzer_GetHrisData", con);
+                    cmd = new SqlCommand("HRIS_Officer206Analyzer_GetHrisData", con);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -226,7 +226,7 @@ namespace Officer206Analyzer
                 SqlDataAdapter sqlda = new SqlDataAdapter();
 
 
-                string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+                string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString();
                 SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
@@ -270,7 +270,7 @@ namespace Officer206Analyzer
                 SqlDataAdapter sqlda = new SqlDataAdapter();
 
 
-                string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+                string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString();
                 SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
@@ -515,7 +515,7 @@ namespace Officer206Analyzer
                     cmd.Parameters.Add("@TotalCO", SqlDbType.VarChar).Value = obj.Encrypt((double.Parse(txtOrganisingAbility.Text.ToString()) +double.Parse(txtForesight.Text.ToString()) +double.Parse(txtCooperation.Text.ToString()) +double.Parse(txtPowerOfExpression.Text.ToString())).ToString());
 
 
-                    if (ddlDutyType.SelectedItem.Text == "Sea" && txtBranchOfApplicant.Text == "Executive")
+                    if (ddlDutyType.SelectedItem.Text == "Sea") //NRT3353 commented && txtBranchOfApplicant.Text == "Executive")
                     {
 
                         cmd.Parameters.Add("@Status", SqlDbType.VarChar).Value = DropDownList1.SelectedItem.Text;
@@ -531,12 +531,12 @@ namespace Officer206Analyzer
                     cmd.Parameters.Add("@createby", SqlDbType.VarChar).Value = Session["nic"].ToString();
 
                     // Modified by NRT3353 FileUploadAAB onwords
-                    if (flpInt.HasFile && flpRep.HasFile && FileUploadAAB.HasFile && FileUploadAABNHQ.HasFile && FileUploadCofN.HasFile || FileUploadVNF.HasFile)
+                    if (flpInt.HasFile || flpRep.HasFile || FileUploadAAB.HasFile || FileUploadAABNHQ.HasFile || FileUploadCofN.HasFile || FileUploadVNF.HasFile)
                     {
                         try
                         {
                             //// Modified by NRT3353 FileUploadAAB onwords
-                            if ((flpInt.PostedFile.ContentType == "application/pdf" || flpInt.PostedFile.ContentType == "image/jpeg") && (flpRep.PostedFile.ContentType == "application/pdf" || flpRep.PostedFile.ContentType == "image/jpeg") && (FileUploadAAB.PostedFile.ContentType == "application/pdf" || FileUploadAAB.PostedFile.ContentType == "image/jpeg") && (FileUploadAABNHQ.PostedFile.ContentType == "application/pdf" || FileUploadAABNHQ.PostedFile.ContentType == "image/jpeg") && (FileUploadCofN.PostedFile.ContentType == "application/pdf" || FileUploadCofN.PostedFile.ContentType == "image/jpeg") || (FileUploadVNF.PostedFile.ContentType == "application/pdf" || FileUploadVNF.PostedFile.ContentType == "image/jpeg"))
+                            if ((flpInt.PostedFile.ContentType == "application/pdf" || flpInt.PostedFile.ContentType == "image/jpeg") || (flpRep.PostedFile.ContentType == "application/pdf" || flpRep.PostedFile.ContentType == "image/jpeg") || (FileUploadAAB.PostedFile.ContentType == "application/pdf" || FileUploadAAB.PostedFile.ContentType == "image/jpeg") || (FileUploadAABNHQ.PostedFile.ContentType == "application/pdf" || FileUploadAABNHQ.PostedFile.ContentType == "image/jpeg") || (FileUploadCofN.PostedFile.ContentType == "application/pdf" || FileUploadCofN.PostedFile.ContentType == "image/jpeg") || (FileUploadVNF.PostedFile.ContentType == "application/pdf" || FileUploadVNF.PostedFile.ContentType == "image/jpeg"))
                             {
                                 if (flpRep.PostedFile.ContentLength < 5120000 && flpInt.PostedFile.ContentLength < 5120000 && FileUploadAAB.PostedFile.ContentLength < 5120000 && FileUploadAABNHQ.PostedFile.ContentLength < 5120000 && FileUploadCofN.PostedFile.ContentLength < 5120000 || FileUploadVNF.PostedFile.ContentLength < 5120000)
                                 {
@@ -556,7 +556,7 @@ namespace Officer206Analyzer
                                     string extension2 = Path.GetExtension(flpRep.PostedFile.FileName);
                                    // string imgnam2 = txtOfficialNumberOfApplicant.Text + "_" + txtReportingOfficerOfficialNumber.Text + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.SelectedDate.ToString()).ToString("yyyy_MM_dd") + extension;
 
-                                    string imgnam2 = txtOfficialNumberOfApplicant.Text + "_" + txtReportingOfficerOfficialNumber.Text + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.Text.ToString()).ToString("yyyy_MM_dd") + extension;
+                                    string imgnam2 = txtOfficialNumberOfApplicant.Text + "_" + txtReportingOfficerOfficialNumber.Text + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.Text.ToString()).ToString("yyyy_MM_dd") + extension2;
                                     
                                     ////FileUpload1.SaveAs(Server.MapPath("D:/hrms_images/") + filename + extension);
                                     ////ProfileImage = "D:/hrms_images/" + filename + extension;
@@ -566,32 +566,30 @@ namespace Officer206Analyzer
                                     //uodateImage_PTable(ProfileImage);
                                     //StatusLabel.Text = "Upload status: Image Successfully Uploaded!";
                                     //StatusLabel.ForeColor = System.Drawing.Color.Green;
-                                                                        
-                                    // Get Details of ABB
+                                                                        // Get Details of ABB
                                     string filenameAAB = Path.GetFileName(FileUploadAAB.FileName);
                                     string extensionAAB = Path.GetExtension(FileUploadAAB.PostedFile.FileName);
-                                    string imgnamAAB = txtOfficialNumberOfApplicant.Text + "_" + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.Text.ToString()).ToString("yyyy_MM_dd") + "_ABB" + extension;
+                                    string imgnamAAB = txtOfficialNumberOfApplicant.Text + "_" + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.Text.ToString()).ToString("yyyy_MM_dd") + "_ABB" + extensionAAB;
                                     FileUploadAAB.SaveAs(Server.MapPath("~/CommentsABB/" + imgnamAAB));
                                     ABBComment = "~/CommentsABB/" + imgnamAAB;
                                     //Get Details of ABB-NHQ
                                     string filenameAABNHQ = Path.GetFileName(FileUploadAABNHQ.FileName);
                                     string extensionAABNHQ = Path.GetExtension(FileUploadAABNHQ.PostedFile.FileName);
-                                    string imgnamAABNHQ = txtOfficialNumberOfApplicant.Text + "_" + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.Text.ToString()).ToString("yyyy_MM_dd") + "_ABBNHQ" + extension;
+                                    string imgnamAABNHQ = txtOfficialNumberOfApplicant.Text + "_" + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.Text.ToString()).ToString("yyyy_MM_dd") + "_ABBNHQ" + extensionAABNHQ;
                                     FileUploadAABNHQ.SaveAs(Server.MapPath("~/CommentsABBNHQ/" + imgnamAABNHQ));
                                     ABBNHQComment = "~/CommentsABBNHQ/" + imgnamAABNHQ;
                                     //Get Details of CofN
                                     string filenameCofN = Path.GetFileName(FileUploadCofN.FileName);
                                     string extensionCofN = Path.GetExtension(FileUploadCofN.PostedFile.FileName);
-                                    string imgnamCofN = txtOfficialNumberOfApplicant.Text + "_" + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.Text.ToString()).ToString("yyyy_MM_dd") + "_CofN" + extension;
+                                    string imgnamCofN = txtOfficialNumberOfApplicant.Text + "_" + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.Text.ToString()).ToString("yyyy_MM_dd") + "_CofN" + extensionCofN;
                                     FileUploadCofN.SaveAs(Server.MapPath("~/CommentsCofN/" + imgnamCofN));
                                     CofNComment = "~/CommentsCofN/" + imgnamCofN;
                                     //Get Details of VNF
                                     string filenameVNF = Path.GetFileName(FileUploadVNF.FileName);
                                     string extensionVNF = Path.GetExtension(FileUploadVNF.PostedFile.FileName);
-                                    string imgnamVNF = txtOfficialNumberOfApplicant.Text + "_" + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.Text.ToString()).ToString("yyyy_MM_dd") + "_VNF" + extension;
+                                    string imgnamVNF = txtOfficialNumberOfApplicant.Text + "_" + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.Text.ToString()).ToString("yyyy_MM_dd") + "_VNF" + extensionVNF;
                                     FileUploadVNF.SaveAs(Server.MapPath("~/CommentsVNF/" + imgnamVNF));
                                     VNFComment = "~/CommentsVNF/" + imgnamVNF;
-
                                     cmd.Parameters.Add("@IntCommentsPath", SqlDbType.VarChar).Value = IntComment;
                                     cmd.Parameters.Add("@RepommentPath", SqlDbType.VarChar).Value = RepComment;
                                     cmd.Parameters.Add("@ABBCommentPath", SqlDbType.VarChar).Value = ABBComment;
@@ -645,19 +643,6 @@ namespace Officer206Analyzer
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
                 }
 
                 catch
@@ -673,12 +658,8 @@ namespace Officer206Analyzer
                 }
             }
 
-            //else 
-            //{
-            //    chkConfirm.Visible = true;
-            //    lblMessage.Text = "Confirm Your Data Before Enter and Upload Comment Files if Available";
-            //    lblMessage.ForeColor = System.Drawing.Color.Red;
-            //}
+
+    
 
             }
                 else
@@ -1268,7 +1249,7 @@ namespace Officer206Analyzer
 
         protected void ddlDutyType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlDutyType.SelectedItem.Text == "Sea" && txtBranchOfApplicant.Text=="Executive")
+            if (ddlDutyType.SelectedItem.Text == "Sea" )//NRT 3353 commented && txtBranchOfApplicant.Text=="Executive")
             {
                 Label2.Visible = true;
                 DropDownList1.Visible = true;

@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NewSiteMaster.Master" AutoEventWireup="true" CodeBehind="update206Marks.aspx.cs" Inherits="Officer206Analyzer.update206Marks" %>
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
         <script type = "text/javascript">
             window.onload = function () {
@@ -445,8 +447,8 @@
                         </asp:DropDownList></div>
                  <div class="col-2"><asp:Button ID="Button2" runat="server" Text="Search" Width="75px" OnClick="btnReportingOfficerSearch_Click" class="btn btn-outline-info btn-sm"/></div>
              </div><br />
-                   <asp:Label ID="lblRepRank" runat="server" Text="Label" Visible="False"></asp:Label>
-                    <asp:Label ID="lblRepBranch" runat="server" Text="Label" Visible="False"></asp:Label>
+                 <div> <asp:Label ID="lblRepRank" runat="server" Text="Label" Visible="False"></asp:Label>
+                    <asp:Label ID="lblRepBranch" runat="server" Text="Label" Visible="False"></asp:Label></div> 
                                 
                                 <br />
              <div class="form-group row">
@@ -459,20 +461,24 @@
                       <asp:TextBox ID="txtRepRank" runat="server" Visible="False"></asp:TextBox>
                      <asp:CheckBox ID="chkConfirm" runat="server"   Text="Confirm" Visible="false" /> 
                  </div>
-                 <asp:Label ID="Label4" runat="server" CssClass="text text-decoration-underline"  Text="REMARKS OF AREA ASSESSMENT BOARD (AAB)"></asp:Label>
+                 <asp:Label ID="Label4" runat="server" CssClass="text text-decoration-underline"  Text="REMARKS OF AREA ASSESSMENT BOARD (AAB)"></asp:Label></div>
              <div class="form-group row">
+                   <div class="col-4"> <asp:Label ID="PdfPathAbb" runat="server" Text="-"></asp:Label>
                 <div class="col-4"> <asp:FileUpload ID="FileUploadAAB" runat="server"  CssClass="form-control form-control-sm" /></div>
              </div><br />
-             <asp:Label ID="Label11" runat="server" CssClass="text text-decoration-underline"  Text="REMARKS OF NHQ ASSESSMENT BOARD (NHQ-AB)"></asp:Label>
+             <asp:Label ID="Label11" runat="server" CssClass="text text-decoration-underline"  Text="REMARKS OF NHQ ASSESSMENT BOARD (NHQ-AB)"></asp:Label></div>
              <div class="form-group row">
+                  <div class="col-4"> <asp:Label ID="PdfPath2" runat="server" Text="-"></asp:Label>
                 <div class="col-4"><asp:FileUpload ID="FileUploadAABNHQ" runat="server" CssClass="form-control form-control-sm" /></div>
              </div><br />
-              <asp:Label ID="Label5" runat="server" CssClass="text text-decoration-underline"  Text="REMARKS OF DIRECTOR GENERAL/CMDE VNF/DIRECTOR/CO VNF"></asp:Label>
+              <asp:Label ID="Label5" runat="server" CssClass="text text-decoration-underline"  Text="REMARKS OF DIRECTOR GENERAL/CMDE VNF/DIRECTOR/CO VNF"></asp:Label></div>
              <div class="form-group row">
+                   <div class="col-4"> <asp:Label ID="PdfPath3" runat="server" Text="-"></asp:Label>
                 <div class="col-4"><asp:FileUpload ID="FileUploadVNF" runat="server" CssClass="form-control form-control-sm" /></div>
              </div><br />
-             <asp:Label ID="Label59" runat="server" CssClass="text text-decoration-underline"  Text="REMARKS OF THE COMMANDER OF THE NAVY/ CHIEF OF STAFF"></asp:Label>
+             <asp:Label ID="Label59" runat="server" CssClass="text text-decoration-underline"  Text="REMARKS OF THE COMMANDER OF THE NAVY/ CHIEF OF STAFF"></asp:Label></div>
              <div class="form-group row">
+                 <div class="col-4"> <asp:Label ID="PdfPath4" runat="server" Text="-"></asp:Label>
                 <div class="col-4"><asp:FileUpload ID="FileUploadCofN" runat="server" CssClass="form-control form-control-sm" /></div>
              </div><br />
              </div>
@@ -494,6 +500,5 @@
                  </div>
              </div>
       <br />
-  </div>
+  
 </asp:Content>
-

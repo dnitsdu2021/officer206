@@ -12,8 +12,8 @@ namespace Officer206Analyzer
 {
     public partial class OTPVarify : System.Web.UI.Page
     {
-        string constr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
+        string constr = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString());
 
         public static DataTable dtOTP = new DataTable();
         public String nic;
@@ -26,7 +26,7 @@ namespace Officer206Analyzer
         {
             using (SqlConnection con = new SqlConnection(constr))
             {
-                SqlCommand cmd = new SqlCommand("varifyOTP", con);
+                SqlCommand cmd = new SqlCommand("HRIS_Officer206Analyzer_varifyOTP", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 con.Open();
                 cmd.Parameters.AddWithValue("@nic", nic);
