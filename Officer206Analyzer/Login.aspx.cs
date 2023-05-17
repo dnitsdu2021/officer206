@@ -19,7 +19,7 @@ namespace Officer206Analyzer
     public partial class Login : System.Web.UI.Page
     {
         string constr = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString());
 
         // HttpClient is intended to be instantiated once per application, rather than per-use. See Remarks.
         static readonly HttpClient client = new HttpClient();
@@ -34,7 +34,7 @@ namespace Officer206Analyzer
             {
 
                 Session["nic"] = "";
-                lblMessage.Text = "";
+
 
             }
         }
@@ -64,7 +64,7 @@ namespace Officer206Analyzer
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.CommandText = "ERPR_Save_OTP";
+                cmd.CommandText = "HRIS_Officer206Analyzer_Save_OTP";
                 cmd.Parameters.AddWithValue("@nicNo", nicNo);
                 cmd.Parameters.AddWithValue("@tempOTP", otp);
                 cmd.Parameters.AddWithValue("@createdTime", DateTime.Parse(System.DateTime.Now.ToString()));
@@ -99,33 +99,23 @@ namespace Officer206Analyzer
                 adpt.Fill(dtlogindetails);
 
 
-                if (dtlogindetails.Rows.Count !=0)
-                {
-                    DoWork();
-
-                    mobileNo = dtlogindetails.Rows[0]["ContactNo"].ToString();
-
-                    Session["nic"] = dtlogindetails.Rows[0]["Nic"].ToString();
-                    Session["NameWithInitials"] = dtlogindetails.Rows[0]["NameWithInitials"].ToString();
-                    Session["email"] = dtlogindetails.Rows[0]["Email"].ToString();
-                    Session["UserRole"] = dtlogindetails.Rows[0]["UserRole"].ToString();
-
-                    string sess = Session["nic"] as string;
-                    nicNo = dtlogindetails.Rows[0]["Nic"].ToString();
-                    saveOTP(numberAsString, nicNo);
-                    Task.Run(async () => await sendSMS(mobileNo, "Your%20OTP%20is%20" + numberAsString));
-                    Response.Redirect("OTPVarify.aspx", true);
-                }
-
-                else{
-
-                    lblMessage.Text = "Username or password incorrect !";
-                    lblMessage.ForeColor = System.Drawing.Color.Red;
-                }
 
 
+                DoWork();
+
+                mobileNo = dtlogindetails.Rows[0]["ContactNo"].ToString();
+
+                Session["nic"] = dtlogindetails.Rows[0]["Nic"].ToString();
+                Session["NameWithInitials"] = dtlogindetails.Rows[0]["NameWithInitials"].ToString();
+                Session["email"] = dtlogindetails.Rows[0]["Email"].ToString();
+                Session["UserRole"] = dtlogindetails.Rows[0]["UserRole"].ToString();
                 
+                string sess = Session["nic"] as string;
+                nicNo = dtlogindetails.Rows[0]["Nic"].ToString();
+                saveOTP(numberAsString, nicNo);
+                Task.Run(async()=> await sendSMS(mobileNo, "Your%20OTP%20is%20" + numberAsString));
 
+                Response.Redirect("OTPVarify.aspx");
 
 
                 //if (mobileNo[0].ToString() == "0" && mobileNo.Length == 10)
@@ -240,36 +230,39 @@ namespace Officer206Analyzer
                 //// Releases the resources of the response.
                 //myHttpWebResponse.Close();
 
-                try
-                {
+            
                     var handler = new HttpClientHandler();
                         //handler.ServerCertificateCustomValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
                     var httpClient = new HttpClient(handler);
                     
                     var response = await httpClient.GetAsync(url);
                     response.EnsureSuccessStatusCode();
+                    
                 }
                 catch (Exception ex)
                 {
                     // show error;
+                    Console.WriteLine("\r\nWebException Raised. The following error occured : {0}", ex.Message);
                 }
                     
 
-            }
-            catch (WebException e)
-            {
-                Console.WriteLine("\r\nWebException Raised. The following error occured : {0}", e.Status);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("\nThe following Exception was raised : {0}", e.Message);
-            }
+            //}
+            //catch (WebException e)
+            //{
+            //    Console.WriteLine("\r\nWebException Raised. The following error occured : {0}", e.Status);
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine("\nThe following Exception was raised : {0}", e.Message);
+            //}
 
 
             //Response.Redirect(url,true);
 
             //Response.Redirect("Insert206.aspx");
-            
+
+         
+             
         }
 
 

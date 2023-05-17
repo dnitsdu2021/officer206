@@ -1076,7 +1076,7 @@ namespace Officer206Analyzer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label PdfPath0;
-        
+        protected global::System.Web.UI.WebControls.Label PdfPath1;
         /// <summary>
         /// txtRepBranch control.
         /// </summary>

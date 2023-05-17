@@ -22,11 +22,15 @@ namespace Officer206Analyzer
         private static DataSet MainDetailsLoad = new DataSet();
         private static DataSet INITIALOFFICERDetails = new DataSet();
         private static DataSet REPORTINGOFFICERDetails = new DataSet();
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
-        public static String strConnString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-        public static String strConnString2 = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString1"].ToString());
+        public static String strConnString = System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
         private static string PDFPATH = "";
         private static string PDFPATH2 = "";
+        private static string PDFPATH3 = "";
+        private static string PDFPATH4 = "";
+        private static string PDFPATH5 = "";
+        private static string PDFPATH6 = "";
+
 
         AccessLog accessLog;
         string AccessPage;
@@ -35,7 +39,7 @@ namespace Officer206Analyzer
         {
             accessLog = new AccessLog(Session);
 
-            AccessPage = "update206Marks"; 
+            AccessPage = "update206Marks";
 
             if (!IsPostBack)
             {
@@ -44,22 +48,22 @@ namespace Officer206Analyzer
                 Response.RedirectIsSuccess(redirectUrl);
 
                 loadPDF();
-                
+
             }
-            else 
+            else
             {
 
                 grdReport1.DataSource = new string[] { };
-            
+
             }
 
 
-           
+
         }
 
         protected void searchBut1_Click(object sender, EventArgs e)
         {
-           // DropDownList1.Visible = false;
+            // DropDownList1.Visible = false;
             chkConfirm.Visible = false;
             txtTotal0.Text = "0";
             txtTotal.Text = "0";
@@ -114,29 +118,28 @@ namespace Officer206Analyzer
                     cmd.Parameters.Add("@OfficialNumber", SqlDbType.Int).Value = int.Parse(txtoffnoMain.Text);
                     cmd.Parameters.Add("@ServiceType", SqlDbType.VarChar, 5).Value = ddlstMain.SelectedValue.ToString();
 
-                   
+
                     cmd.ExecuteNonQuery();
                     sqlda.SelectCommand = cmd;
                     sqlda.Fill(MainDetails);
 
                     for (int c = 0; MainDetails.Tables[0].Rows.Count > c; c++)
-
                     {
                         string valu = obj.Decrypt(MainDetails.Tables[0].Rows[c]["Marks"].ToString());
-                        MainDetails.Tables[0].Rows[c]["Marks"]=valu;
+                        MainDetails.Tables[0].Rows[c]["Marks"] = valu;
                         MainDetails.Tables[0].AcceptChanges();
                     }
 
-                        if (MainDetails.Tables[0].Rows.Count > 0)
-                        {
-                            grdReport1.DataSource = MainDetails.Tables[0];
-                            grdReport1.DataBind();
+                    if (MainDetails.Tables[0].Rows.Count > 0)
+                    {
+                        grdReport1.DataSource = MainDetails.Tables[0];
+                        grdReport1.DataBind();
 
-                        }
-                        else
-                        {
-                            grdReport1.DataSource = new string[] { };
-                        }
+                    }
+                    else
+                    {
+                        grdReport1.DataSource = new string[] { };
+                    }
 
 
 
@@ -360,19 +363,16 @@ namespace Officer206Analyzer
 
                             cmd.Parameters.Add("@DutyType", SqlDbType.VarChar).Value = ddlDutyType.SelectedItem.Text.ToString();
                             cmd.Parameters.Add("@TotalMark", SqlDbType.VarChar).Value = obj.Encrypt(txtMarks.Text.ToString());
+                            cmd.Parameters.Add("@remarks", SqlDbType.VarChar).Value = txtremarks.Text.ToString();
 
-                            if (CheckBox1.Checked == false) 
+                            if (CheckBox1.Checked == false)
                             {
                                 if (txtInitiatingOfficerName.Text.Length > 0)
                                 {
-
-
                                     cmd.Parameters.Add("@InitiatingOfficerOfficialNumber", SqlDbType.Int).Value = int.Parse(txtInitiatingOfficerOfficialNumber.Text.ToString());
                                     cmd.Parameters.Add("@InitiatingOfficerServiceType", SqlDbType.VarChar).Value = ddlInitiatingOfficerServiceType.SelectedItem.Text.ToString();
                                     cmd.Parameters.Add("@InitiatingOfficerName", SqlDbType.VarChar).Value = txtInitiatingOfficerName.Text.ToString();
                                     cmd.Parameters.Add("@InitiatingOfficerOtherService", SqlDbType.VarChar).Value = "F";
-
-
 
                                     if (REPORTINGOFFICERDetails.Tables.Count > 0)
                                     {
@@ -387,7 +387,6 @@ namespace Officer206Analyzer
                                             cmd.Parameters.Add("@InitiatingOfficerBranch", SqlDbType.VarChar).Value = lblIntBranch.Text;
                                             cmd.Parameters.Add("@InitiatingOfficerRank", SqlDbType.VarChar).Value = lblIntRank.Text;
 
-
                                         }
                                     }
 
@@ -396,7 +395,6 @@ namespace Officer206Analyzer
 
                                         cmd.Parameters.Add("@InitiatingOfficerBranch", SqlDbType.VarChar).Value = lblIntBranch.Text;
                                         cmd.Parameters.Add("@InitiatingOfficerRank", SqlDbType.VarChar).Value = lblIntRank.Text;
-
 
                                     }
                                 }
@@ -409,9 +407,7 @@ namespace Officer206Analyzer
                                     cmd.Parameters.Add("@InitiatingOfficerRank", SqlDbType.VarChar).Value = null;
                                     cmd.Parameters.Add("@InitiatingOfficerOtherService", SqlDbType.VarChar).Value = "F";
 
-                                   
-                                
-                                
+
                                 }
                             }
 
@@ -428,7 +424,7 @@ namespace Officer206Analyzer
                                     cmd.Parameters.Add("@InitiatingOfficerRank", SqlDbType.VarChar).Value = null;
                                     cmd.Parameters.Add("@InitiatingOfficerOtherService", SqlDbType.VarChar).Value = "T";
                                 }
-                                else 
+                                else
                                 {
 
                                     cmd.Parameters.Add("@InitiatingOfficerOfficialNumber", SqlDbType.Int).Value = null;
@@ -437,24 +433,16 @@ namespace Officer206Analyzer
                                     cmd.Parameters.Add("@InitiatingOfficerBranch", SqlDbType.VarChar).Value = null;
                                     cmd.Parameters.Add("@InitiatingOfficerRank", SqlDbType.VarChar).Value = null;
                                     cmd.Parameters.Add("@InitiatingOfficerOtherService", SqlDbType.VarChar).Value = "T";
-                                
-                                
+
+
                                 }
-
-
 
                             }
 
-
-                            if (CheckBox2.Checked == false) 
+                            if (CheckBox2.Checked == false)
                             {
                                 if (txtReportingOfficerName.Text.Length > 0)
-                               
                                 {
-
-
-
-
                                     cmd.Parameters.Add("@ReportingOfficerOfficialNumber", SqlDbType.Int).Value = int.Parse(txtReportingOfficerOfficialNumber.Text.ToString());
                                     cmd.Parameters.Add("@ReportingOfficerServiceType", SqlDbType.VarChar).Value = ddlReportingOfficerServiceType.SelectedItem.Text.ToString();
                                     cmd.Parameters.Add("@ReportingOfficerName", SqlDbType.VarChar).Value = txtReportingOfficerName.Text.ToString();
@@ -473,7 +461,6 @@ namespace Officer206Analyzer
                                             cmd.Parameters.Add("@ReportingOfficerBranch", SqlDbType.VarChar).Value = lblRepBranch.Text;
                                             cmd.Parameters.Add("@ReportingOfficerRank", SqlDbType.VarChar).Value = lblRepRank.Text;
 
-
                                         }
                                     }
 
@@ -483,10 +470,9 @@ namespace Officer206Analyzer
                                         cmd.Parameters.Add("@ReportingOfficerBranch", SqlDbType.VarChar).Value = lblRepBranch.Text;
                                         cmd.Parameters.Add("@ReportingOfficerRank", SqlDbType.VarChar).Value = lblRepRank.Text;
 
-
                                     }
                                 }
-                                else 
+                                else
                                 {
                                     cmd.Parameters.Add("@ReportingOfficerOfficialNumber", SqlDbType.Int).Value = null;
                                     cmd.Parameters.Add("@ReportingOfficerServiceType", SqlDbType.VarChar).Value = null;
@@ -495,9 +481,6 @@ namespace Officer206Analyzer
                                     cmd.Parameters.Add("@ReportingOfficerRank", SqlDbType.VarChar).Value = null;
                                     cmd.Parameters.Add("@ReportingOfficerOtherService", SqlDbType.VarChar).Value = "F";
 
-                                   
-
-                                
                                 }
                             }
 
@@ -514,7 +497,7 @@ namespace Officer206Analyzer
                                     cmd.Parameters.Add("@ReportingOfficerOtherService", SqlDbType.VarChar).Value = "T";
 
                                 }
-                                else 
+                                else
                                 {
                                     cmd.Parameters.Add("@ReportingOfficerOfficialNumber", SqlDbType.Int).Value = null;
                                     cmd.Parameters.Add("@ReportingOfficerServiceType", SqlDbType.VarChar).Value = null;
@@ -522,8 +505,7 @@ namespace Officer206Analyzer
                                     cmd.Parameters.Add("@ReportingOfficerBranch", SqlDbType.VarChar).Value = null;
                                     cmd.Parameters.Add("@ReportingOfficerRank", SqlDbType.VarChar).Value = null;
                                     cmd.Parameters.Add("@ReportingOfficerOtherService", SqlDbType.VarChar).Value = "T";
-                                
-                                
+
                                 }
                             }
 
@@ -564,7 +546,7 @@ namespace Officer206Analyzer
 
                             cmd.Parameters.Add("@createby", SqlDbType.VarChar).Value = "Sam";
 
-                            if (ddlDutyType.SelectedItem.Text == "Sea" && txtBranchOfApplicant.Text == "Executive")
+                            if (ddlDutyType.SelectedItem.Text == "Sea") //&& txtBranchOfApplicant.Text == "Executive")
                             {
 
                                 cmd.Parameters.Add("@Status", SqlDbType.VarChar).Value = DropDownList1.SelectedItem.Text;
@@ -577,16 +559,13 @@ namespace Officer206Analyzer
 
                             }
 
-
-
-
-                            if (flpInt.HasFile || flpRep.HasFile)
+                            if (flpInt.HasFile || flpRep.HasFile || FileUploadAAB.HasFile || FileUploadAABNHQ.HasFile || FileUploadVNF.HasFile || FileUploadCofN.HasFile)
                             {
                                 try
                                 {
                                     if ((flpInt.PostedFile.ContentType == "application/pdf" || flpInt.PostedFile.ContentType == "image/jpeg"))
                                     {
-                                        if ( flpInt.PostedFile.ContentLength < 5120000)
+                                        if (flpInt.PostedFile.ContentLength < 5120000)
                                         {
 
                                             string filename = Path.GetFileName(flpInt.FileName);
@@ -597,15 +576,9 @@ namespace Officer206Analyzer
                                             flpInt.SaveAs(Server.MapPath("~/CommentsIniOfficer/" + imgnam));
                                             IntComment = "~/CommentsIniOfficer/" + imgnam;
 
-                                           
-
-
-
-
                                             cmd.Parameters.Add("@IntCommentsPath", SqlDbType.VarChar).Value = IntComment;
 
-                                          
-                                           
+
                                         }
                                         else
                                         {
@@ -617,13 +590,11 @@ namespace Officer206Analyzer
                                     else
                                     {
                                         cmd.Parameters.Add("@IntCommentsPath", SqlDbType.VarChar).Value = PDFPATH;
-                                        
+
                                         lblMessage.Text = "Upload status: Only pdf files are accepted !";
                                         lblMessage.ForeColor = System.Drawing.Color.Red;
                                         //StatusLabel2.Text = "Upload status: Only JPEG,PNG files are accepted!";
                                     }
-
-
 
 
                                     if ((flpRep.PostedFile.ContentType == "application/pdf" || flpRep.PostedFile.ContentType == "image/jpeg"))
@@ -631,7 +602,6 @@ namespace Officer206Analyzer
                                         if (flpRep.PostedFile.ContentLength < 5120000)
                                         {
 
-                                           
                                             string filename2 = Path.GetFileName(flpRep.FileName);
                                             string extension2 = Path.GetExtension(flpRep.PostedFile.FileName);
                                             string imgnam2 = txtOfficialNumberOfApplicant.Text + "_" + txtReportingOfficerOfficialNumber.Text + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.SelectedDate.ToString()).ToString("yyyy_MM_dd") + extension2;
@@ -645,15 +615,11 @@ namespace Officer206Analyzer
                                             //StatusLabel.ForeColor = System.Drawing.Color.Green;
 
 
-
-
-
-                                           
-
                                             cmd.Parameters.Add("@RepommentPath", SqlDbType.VarChar).Value = RepComment;
 
-                                            
                                         }
+
+
                                         else
                                         {
                                             lblMessage.Text = "Upload status: The file has to be less than 5mb!";
@@ -661,27 +627,163 @@ namespace Officer206Analyzer
                                             //StatusLabel2.Text = " Upload status: The file has to be less than 5mb!";
                                         }
                                     }
+
                                     else
                                     {
 
-                                       
                                         cmd.Parameters.Add("@RepommentPath", SqlDbType.VarChar).Value = PDFPATH2;
                                         lblMessage.Text = "Upload status: Only pdf files are accepted !";
                                         lblMessage.ForeColor = System.Drawing.Color.Red;
                                         //StatusLabel2.Text = "Upload status: Only JPEG,PNG files are accepted!";
                                     }
 
+                                    //NRT3353 ABB
+                                    if ((FileUploadAAB.PostedFile.ContentType == "application/pdf" || FileUploadAAB.PostedFile.ContentType == "image/jpeg"))
+                                    {
+                                        if (FileUploadAAB.PostedFile.ContentLength < 5120000)
+                                        {
+
+                                            string filenameAAB = Path.GetFileName(FileUploadAAB.FileName);
+                                            string extensionAAB = Path.GetExtension(FileUploadAAB.PostedFile.FileName);
+                                            string imgnamAAB = txtOfficialNumberOfApplicant.Text + "_" + txtInitiatingOfficerOfficialNumber.Text + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.SelectedDate.ToString()).ToString("yyyy_MM_dd") + extensionAAB;
+                                            FileUploadAAB.SaveAs(Server.MapPath("~/CommentsABB/" + imgnamAAB));
+                                            ABBComment = "~/CommentsABB/" + imgnamAAB;
+
+                                            cmd.Parameters.Add("@ABBCommentPath ", SqlDbType.VarChar).Value = ABBComment;
+
+                                        }
+                                        else
+                                        {
+                                            lblMessage.Text = "Upload status: The file has to be less than 5mb!";
+                                            lblMessage.ForeColor = System.Drawing.Color.Red;
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        cmd.Parameters.Add("@ABBCommentPath", SqlDbType.VarChar).Value = PDFPATH3;
+
+                                        lblMessage.Text = "Upload status: Only pdf files are accepted !";
+                                        lblMessage.ForeColor = System.Drawing.Color.Red;
+
+                                    }
+                                    //ABBNHQCommentPath
+                                    if ((FileUploadAABNHQ.PostedFile.ContentType == "application/pdf" || FileUploadAABNHQ.PostedFile.ContentType == "image/jpeg"))
+                                    {
+                                        if (FileUploadAABNHQ.PostedFile.ContentLength < 5120000)
+                                        {
+
+                                            string filenameAABNHQ = Path.GetFileName(FileUploadAABNHQ.FileName);
+                                            string extensionAABNHQ = Path.GetExtension(FileUploadAABNHQ.PostedFile.FileName);
+                                            string imgnamAABNHQ = txtOfficialNumberOfApplicant.Text + "_" + txtInitiatingOfficerOfficialNumber.Text + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.SelectedDate.ToString()).ToString("yyyy_MM_dd") + extensionAABNHQ;
+                                            FileUploadAABNHQ.SaveAs(Server.MapPath("~/CommentsABBNHQ/" + imgnamAABNHQ));
+                                            ABBNHQComment = "~/CommentsABBNHQ/" + imgnamAABNHQ;
+
+                                            cmd.Parameters.Add("@ABBNHQCommentPath", SqlDbType.VarChar).Value = ABBNHQComment;
+
+                                        }
+                                        else
+                                        {
+                                            lblMessage.Text = "Upload status: The file has to be less than 5mb!";
+                                            lblMessage.ForeColor = System.Drawing.Color.Red;
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        cmd.Parameters.Add("@ABBNHQCommentPath", SqlDbType.VarChar).Value = PDFPATH4;
+
+                                        lblMessage.Text = "Upload status: Only pdf files are accepted !";
+                                        lblMessage.ForeColor = System.Drawing.Color.Red;
+
+                                    }
+                                    //// VNF
+                                    if ((FileUploadVNF.PostedFile.ContentType == "application/pdf" || FileUploadVNF.PostedFile.ContentType == "image/jpeg"))
+                                    {
+                                        if (FileUploadVNF.PostedFile.ContentLength < 5120000)
+                                        {
+
+                                            string filenameVNF = Path.GetFileName(FileUploadVNF.FileName);
+                                            string extensionVNF = Path.GetExtension(FileUploadVNF.PostedFile.FileName);
+                                            string imgnamVNF = txtOfficialNumberOfApplicant.Text + "_" + txtInitiatingOfficerOfficialNumber.Text + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.SelectedDate.ToString()).ToString("yyyy_MM_dd") + extensionVNF;
+                                            FileUploadVNF.SaveAs(Server.MapPath("~/CommentsVNF/" + imgnamVNF));
+                                            VNFComment = "~/CommentsVNF/" + imgnamVNF;
+
+                                            cmd.Parameters.Add("@VNFCommentPath", SqlDbType.VarChar).Value = VNFComment;
+
+                                        }
+                                        else
+                                        {
+                                            lblMessage.Text = "Upload status: The file has to be less than 5mb!";
+                                            lblMessage.ForeColor = System.Drawing.Color.Red;
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        cmd.Parameters.Add("@VNFCommentPath", SqlDbType.VarChar).Value = PDFPATH5;
+
+                                        lblMessage.Text = "Upload status: Only pdf files are accepted !";
+                                        lblMessage.ForeColor = System.Drawing.Color.Red;
+
+                                    }
+
+                                    ////Get Details of COFN
+                                    if ((FileUploadCofN.PostedFile.ContentType == "application/pdf" || FileUploadCofN.PostedFile.ContentType == "image/jpeg"))
+                                    {
+                                        if (FileUploadCofN.PostedFile.ContentLength < 5120000)
+                                        {
+
+                                            string filenameCofN = Path.GetFileName(FileUploadCofN.FileName);
+                                            string extensionCofN = Path.GetExtension(FileUploadCofN.PostedFile.FileName);
+                                            string imgnamCofN = txtOfficialNumberOfApplicant.Text + "_" + txtInitiatingOfficerOfficialNumber.Text + "_" + ddlOccation.SelectedItem.Text + "_" + Convert.ToDateTime(txtAssesmentPeriodOfNav206To.SelectedDate.ToString()).ToString("yyyy_MM_dd") + extensionCofN;
+                                            FileUploadCofN.SaveAs(Server.MapPath("~/CommentsCofN/" + imgnamCofN));
+                                            CofNComment = "~/CommentsVNF/" + imgnamCofN;
+
+                                            cmd.Parameters.Add("@CofNCommentPath", SqlDbType.VarChar).Value = imgnamCofN;
+
+                                        }
+                                        else
+                                        {
+                                            lblMessage.Text = "Upload status: The file has to be less than 5mb!";
+                                            lblMessage.ForeColor = System.Drawing.Color.Red;
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        cmd.Parameters.Add("@CofNCommentPath", SqlDbType.VarChar).Value = PDFPATH6;
+
+                                        lblMessage.Text = "Upload status: Only pdf files are accepted !";
+                                        lblMessage.ForeColor = System.Drawing.Color.Red;
+
+                                    }
+
+                                    //END NRT3353
+
+
+
                                     cmd.ExecuteNonQuery();
                                     lblMessage.Text = "Save Success";
                                     lblMessage.ForeColor = System.Drawing.Color.Green;
                                 }
+
                                 catch (Exception ex)
                                 {
                                     lblMessage.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
                                     lblMessage.ForeColor = System.Drawing.Color.Red;
                                     //StatusLabel2.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
                                 }
+
+
+                                //// Modified by NRT3353
+
+
                             }
+
+                                /////
+
+
                             else
                             {
 
@@ -690,6 +792,10 @@ namespace Officer206Analyzer
 
                                 cmd.Parameters.Add("@IntCommentsPath", SqlDbType.VarChar).Value = PDFPATH;
                                 cmd.Parameters.Add("@RepommentPath", SqlDbType.VarChar).Value = PDFPATH2;
+                                //cmd.Parameters.Add("@ABBCommentPath", SqlDbType.VarChar).Value = PDFPATH3;
+                                //cmd.Parameters.Add("@ABBNHQCommentPath", SqlDbType.VarChar).Value = PDFPATH4;
+                                //cmd.Parameters.Add("@VNFCommentPath", SqlDbType.VarChar).Value = PDFPATH5;
+                                //cmd.Parameters.Add("@CofNCommentPath", SqlDbType.VarChar).Value = PDFPATH6;
 
                                 cmd.ExecuteNonQuery();
                                 lblMessage.Text = "Save Success";
@@ -698,8 +804,8 @@ namespace Officer206Analyzer
                             }
 
 
-
                         }
+
 
                         catch
                         {
@@ -725,7 +831,7 @@ namespace Officer206Analyzer
                 {
                     lblMessage.Text = "Enter Total Mark First";
                     lblMessage.ForeColor = System.Drawing.Color.Red;
-                   
+
                 }
 
             }
@@ -734,15 +840,18 @@ namespace Officer206Analyzer
                 txtTotal0.BackColor = Color.Red;
                 lblMessage.Text = "Total Not Equal";
                 lblMessage.ForeColor = System.Drawing.Color.Red;
-               
+
+
             }
 
             searchBut1_Click(null, null);
+
+
         }
 
 
-        
-       
+
+
 
         private bool IsTxtAssesmentPeriodOfNav206FromIsAValidDate()
         {
@@ -795,7 +904,7 @@ namespace Officer206Analyzer
         protected void txtGeneral_TextChanged(object sender, EventArgs e)
         {
 
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -811,7 +920,7 @@ namespace Officer206Analyzer
 
         protected void txtInitiative_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -827,7 +936,7 @@ namespace Officer206Analyzer
 
         protected void txtReliability_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -844,7 +953,7 @@ namespace Officer206Analyzer
 
         protected void txtZealAndEnergy_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -860,7 +969,7 @@ namespace Officer206Analyzer
 
         protected void txtMoralAndStandard_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -876,7 +985,7 @@ namespace Officer206Analyzer
 
         protected void txtTact_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -892,7 +1001,7 @@ namespace Officer206Analyzer
 
         protected void txtCheerfulness_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -908,7 +1017,7 @@ namespace Officer206Analyzer
 
         protected void txtLoyalty_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -924,7 +1033,7 @@ namespace Officer206Analyzer
 
         protected void txtSocialAttributes_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -940,7 +1049,7 @@ namespace Officer206Analyzer
 
         protected void txtPowerOfCommand_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -956,7 +1065,7 @@ namespace Officer206Analyzer
 
         protected void txtForceOfPersonality_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -972,7 +1081,7 @@ namespace Officer206Analyzer
 
         protected void txtGeneralBearing_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -988,7 +1097,7 @@ namespace Officer206Analyzer
 
         protected void txtMannertoSubordinates_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -1004,7 +1113,7 @@ namespace Officer206Analyzer
 
         protected void txtIntelligence_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -1020,7 +1129,7 @@ namespace Officer206Analyzer
 
         protected void txtAlertness_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -1037,7 +1146,7 @@ namespace Officer206Analyzer
 
         protected void txtReasoningPower_Judgement_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -1053,7 +1162,7 @@ namespace Officer206Analyzer
 
         protected void txtAdaptebility_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -1069,7 +1178,7 @@ namespace Officer206Analyzer
 
         protected void txtOrganisingAbility_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -1085,7 +1194,7 @@ namespace Officer206Analyzer
 
         protected void txtForesight_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -1101,7 +1210,7 @@ namespace Officer206Analyzer
 
         protected void txtCooperation_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -1117,7 +1226,7 @@ namespace Officer206Analyzer
 
         protected void txtPowerOfExpression_TextChanged(object sender, EventArgs e)
         {
-            if (txtTotal.Text.Length >=1)
+            if (txtTotal.Text.Length >= 1)
             {
                 CatATT();
                 CatToll();
@@ -1241,15 +1350,15 @@ namespace Officer206Analyzer
             txtDateOfJoinOfApplicant.Clear();
 
 
-                    txtInitiatingOfficerOfficialNumber.Text = "";
-                    txtInitiatingOfficerName.Text = "";
-                        txtReportingOfficerOfficialNumber.Text = "";
-                        txtReportingOfficerName.Text = "";
+            txtInitiatingOfficerOfficialNumber.Text = "";
+            txtInitiatingOfficerName.Text = "";
+            txtReportingOfficerOfficialNumber.Text = "";
+            txtReportingOfficerName.Text = "";
 
 
 
             GridDataItem selectedItem = (GridDataItem)grdReport1.SelectedItems[0];
-             ID = selectedItem["Id"].Text.Replace("&nbsp;", "");
+            ID = selectedItem["Id"].Text.Replace("&nbsp;", "");
 
 
 
@@ -1277,7 +1386,7 @@ namespace Officer206Analyzer
 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@ID", SqlDbType.VarChar).Value = ID;
-                   
+
                     cmd.ExecuteNonQuery();
                     sqlda.SelectCommand = cmd;
                     sqlda.Fill(MainDetailsLoad);
@@ -1289,9 +1398,9 @@ namespace Officer206Analyzer
                     //    MainDetailsLoad.Tables[0].AcceptChanges();
                     //}
 
-                    
-                        
-                    ddlOccation.SelectedItem.Text= MainDetailsLoad.Tables[0].Rows[0]["OccationOfNav206"].ToString();
+
+
+                    ddlOccation.SelectedItem.Text = MainDetailsLoad.Tables[0].Rows[0]["OccationOfNav206"].ToString();
                     ddlDutyType.SelectedItem.Text = MainDetailsLoad.Tables[0].Rows[0]["DutyType"].ToString();
                     txtFullNameOfApplicant.Text = MainDetailsLoad.Tables[1].Rows[0]["FullName"].ToString();
                     txtOfficialNumberOfApplicant.Text = MainDetailsLoad.Tables[0].Rows[0]["ApplicantOfficialNumber"].ToString();
@@ -1299,7 +1408,7 @@ namespace Officer206Analyzer
                     txtEntryOfApplicant.Text = MainDetailsLoad.Tables[0].Rows[0]["Entry"].ToString(); ;
                     txtPresentRankOfApplicant.Text = MainDetailsLoad.Tables[0].Rows[0]["PresentRank"].ToString(); ;
                     txtSeniorityDateOfApplicant.SelectedDate = DateTime.Parse(MainDetailsLoad.Tables[0].Rows[0]["PresentRankDate"].ToString()); ;
-                    txtBranchOfApplicant.Text = MainDetailsLoad.Tables[0].Rows[0]["Branch"].ToString();                   
+                    txtBranchOfApplicant.Text = MainDetailsLoad.Tables[0].Rows[0]["Branch"].ToString();
                     txtPresentRankOfApplicant.Text = MainDetailsLoad.Tables[0].Rows[0]["PresentRank"].ToString();
                     txtSeniorityDateOfApplicant.SelectedDate = DateTime.Parse(MainDetailsLoad.Tables[0].Rows[0]["SeniorityDate"].ToString()); ;
                     txtPresentRankDate.SelectedDate = DateTime.Parse(MainDetailsLoad.Tables[0].Rows[0]["PresentRankDate"].ToString()); ;
@@ -1309,8 +1418,9 @@ namespace Officer206Analyzer
 
                     txtAssesmentPeriodOfNav206From.SelectedDate = DateTime.Parse(MainDetailsLoad.Tables[0].Rows[0]["From"].ToString());
                     txtAssesmentPeriodOfNav206To.SelectedDate = DateTime.Parse(MainDetailsLoad.Tables[0].Rows[0]["To"].ToString());
-                   
+
                     txtMarks.Text = obj.Decrypt(MainDetailsLoad.Tables[0].Rows[0]["Marks"].ToString());
+                    txtremarks.Text = MainDetailsLoad.Tables[0].Rows[0]["remarks"].ToString();
 
                     txtGeneral.Text = obj.Decrypt(MainDetailsLoad.Tables[2].Rows[0]["General"].ToString());
                     txtInitiative.Text = obj.Decrypt(MainDetailsLoad.Tables[2].Rows[0]["Initiative"].ToString());
@@ -1343,7 +1453,7 @@ namespace Officer206Analyzer
                     txtCooperation.Text = obj.Decrypt(MainDetailsLoad.Tables[6].Rows[0]["Cooperation"].ToString());
                     txtPowerOfExpression.Text = obj.Decrypt(MainDetailsLoad.Tables[6].Rows[0]["PowerOfExpression"].ToString());
 
-                    if ("Executive" == MainDetailsLoad.Tables[0].Rows[0]["Branch"].ToString() && "Sea" == MainDetailsLoad.Tables[0].Rows[0]["DutyType"].ToString())
+                    if ("Executive" == MainDetailsLoad.Tables[0].Rows[0]["Branch"].ToString()) // && "Sea" == MainDetailsLoad.Tables[0].Rows[0]["DutyType"].ToString())
                     {
                         Label3.Visible = true;
                         DropDownList1.Visible = true;
@@ -1366,12 +1476,12 @@ namespace Officer206Analyzer
 
                     }
 
-                    else 
+                    else
                     {
 
                         Label3.Visible = false;
                         DropDownList1.Visible = false;
-                    
+
                     }
 
                     CatATT();
@@ -1386,7 +1496,7 @@ namespace Officer206Analyzer
                         {
 
                             txtInitiatingOfficerOfficialNumber.Text = "";
-                           // ddlInitiatingOfficerServiceType.Text = "";
+                            // ddlInitiatingOfficerServiceType.Text = "";
                             txtInitiatingOfficerName.Text = MainDetailsLoad.Tables[0].Rows[0]["InitiatingOfficerName"].ToString();
                             lblIntBranch.Text = "";
                             lblIntRank.Text = "";
@@ -1397,11 +1507,11 @@ namespace Officer206Analyzer
                         else
                         {
 
-                           
+
 
 
                             txtInitiatingOfficerOfficialNumber.Text = "";
-                           // ddlInitiatingOfficerServiceType.Text = "";
+                            // ddlInitiatingOfficerServiceType.Text = "";
                             txtInitiatingOfficerName.Text = "";
                             lblIntBranch.Text = "";
                             lblIntRank.Text = "";
@@ -1423,12 +1533,12 @@ namespace Officer206Analyzer
                         {
                             ddlInitiatingOfficerServiceType.SelectedItem.Text = MainDetailsLoad.Tables[0].Rows[0]["InitiatingOfficerServiceType"].ToString();
                         }
-                        else 
+                        else
                         {
-                        
-                        
+
+
                         }
-                        
+
                         txtInitiatingOfficerName.Text = MainDetailsLoad.Tables[0].Rows[0]["InitiatingOfficerName"].ToString();
                         lblIntBranch.Text = MainDetailsLoad.Tables[0].Rows[0]["InitiatingOfficerBranch"].ToString();
                         lblIntRank.Text = MainDetailsLoad.Tables[0].Rows[0]["InitiatingOfficerRank"].ToString();
@@ -1443,7 +1553,7 @@ namespace Officer206Analyzer
                             ddlReportingOfficerServiceType.Enabled = false;
                             txtReportingOfficerOfficialNumber.Enabled = false;
                             txtReportingOfficerOfficialNumber.Text = "";
-                         //   ddlReportingOfficerServiceType.Text = "";
+                            //   ddlReportingOfficerServiceType.Text = "";
                             txtReportingOfficerName.Text = MainDetailsLoad.Tables[0].Rows[0]["ReportingOfficerName"].ToString();
                             lblRepBranch.Text = "";
                             lblRepRank.Text = "";
@@ -1454,12 +1564,12 @@ namespace Officer206Analyzer
                             ddlReportingOfficerServiceType.Enabled = false;
                             txtReportingOfficerOfficialNumber.Enabled = false;
                             txtReportingOfficerOfficialNumber.Text = "";
-                         //   ddlReportingOfficerServiceType.Text = "";
+                            //   ddlReportingOfficerServiceType.Text = "";
                             txtReportingOfficerName.Text = "";
                             lblRepBranch.Text = "";
                             lblRepRank.Text = "";
                             CheckBox1.Checked = true;
-                            
+
                         }
                     }
 
@@ -1533,7 +1643,52 @@ namespace Officer206Analyzer
                             PDFPATH = "";
                         }
                     }
+                    //20230504
+                    //try
+                    //{
+                    //    {
+                    //        if (MainDetailsLoad.Tables[0].Rows[0]["ABBCommentPath"].ToString().Length > 0)
+                    //        {
+                    //            PdfPath1.Text = "";
+                    //            HyperLink hyplink = new HyperLink();
+                    //            hyplink.ID = "PDFID";
+                    //            hyplink.Text = "Available Comment";
+                    //            hyplink.NavigateUrl = MainDetailsLoad.Tables[0].Rows[0]["ABBCommentPath"].ToString();
+                    //            hyplink.Attributes.Add("onClick", "popup();");
+                    //            hyplink.Target = "_blank";
+                    //            PdfPath.Controls.Add(hyplink);
+                    //            PDFPATH3 = MainDetailsLoad.Tables[0].Rows[0]["ABBCommentPath"].ToString(); ;
+                    //        }
 
+                    //        else
+                    //        {
+                    //            PdfPath.Text = "";
+                    //            HyperLink hyplink = new HyperLink();
+                    //            hyplink.ID = "PDFID";
+                    //            hyplink.Text = "Pdf not Available";
+                    //            hyplink.NavigateUrl = "";
+                    //            // hyplink.Attributes.Add("onClick", "popup();");
+                    //            hyplink.Target = "_blank";
+                    //            PdfPath.Controls.Add(hyplink);
+                    //            PDFPATH3 = "";
+                    //        }
+                    //    }
+                    //}
+                    //catch
+                    //{
+                    //    {
+                    //        PdfPath.Text = "";
+                    //        HyperLink hyplink = new HyperLink();
+                    //        hyplink.ID = "PDFID";
+                    //        hyplink.Text = "Pdf not Available";
+                    //        hyplink.NavigateUrl = "";
+                    //        // hyplink.Attributes.Add("onClick", "popup();");
+                    //        hyplink.Target = "_blank";
+                    //        PdfPath.Controls.Add(hyplink);
+                    //        PDFPATH3 = "";
+                    //    }
+                    //}
+                    //
                     try
                     {
                         {
@@ -1549,7 +1704,7 @@ namespace Officer206Analyzer
                                 PdfPath0.Controls.Add(hyplink);
                                 PDFPATH2 = MainDetailsLoad.Tables[0].Rows[0]["RepommentPath"].ToString(); ;
                             }
-                            else 
+                            else
                             {
                                 PdfPath0.Text = "";
                                 HyperLink hyplink = new HyperLink();
@@ -1560,24 +1715,24 @@ namespace Officer206Analyzer
                                 hyplink.Target = "_blank";
                                 PdfPath0.Controls.Add(hyplink);
                                 PDFPATH2 = "";
-                            
+
                             }
-                }
- }
+                        }
+                    }
                     catch
                     {
-                {
+                        {
 
-                    PdfPath0.Text = "";
-                    HyperLink hyplink = new HyperLink();
-                    hyplink.ID = "PDFID2";
-                    hyplink.Text = "Pdf not Available";
-                    hyplink.NavigateUrl = "";
-                    // hyplink.Attributes.Add("onClick", "popup();");
-                    hyplink.Target = "_blank";
-                    PdfPath0.Controls.Add(hyplink);
-                    PDFPATH2 = "";
-                }
+                            PdfPath0.Text = "";
+                            HyperLink hyplink = new HyperLink();
+                            hyplink.ID = "PDFID2";
+                            hyplink.Text = "Pdf not Available";
+                            hyplink.NavigateUrl = "";
+                            // hyplink.Attributes.Add("onClick", "popup();");
+                            hyplink.Target = "_blank";
+                            PdfPath0.Controls.Add(hyplink);
+                            PDFPATH2 = "";
+                        }
 
                     }
                 }
@@ -1619,7 +1774,7 @@ namespace Officer206Analyzer
                     PDFPATH = MainDetailsLoad.Tables[0].Rows[0]["IntCommentsPath"].ToString(); ;
                 }
 
-                else 
+                else
                 {
                     PdfPath.Text = "";
                     HyperLink hyplink = new HyperLink();
@@ -1630,7 +1785,7 @@ namespace Officer206Analyzer
                     hyplink.Target = "_blank";
                     PdfPath.Controls.Add(hyplink);
                     PDFPATH = "";
-                
+
                 }
             }
             catch
@@ -1673,7 +1828,7 @@ namespace Officer206Analyzer
                     hyplink.Target = "_blank";
                     PdfPath0.Controls.Add(hyplink);
                     PDFPATH2 = "";
-                
+
                 }
             }
             catch
@@ -1691,6 +1846,51 @@ namespace Officer206Analyzer
                 }
 
 
+            }
+
+            //20230504
+            try
+            {
+                if (MainDetailsLoad.Tables[0].Rows[0]["ABBCommentPath"].ToString().Length > 0)
+                {
+                   // PdfPathAbb.Text = "";
+                    HyperLink hyplink = new HyperLink();
+                    hyplink.ID = "PDFID3";
+                    hyplink.Text = "Available Comment";
+                    hyplink.NavigateUrl = MainDetailsLoad.Tables[0].Rows[0]["ABBCommentPath"].ToString();
+                    hyplink.Attributes.Add("onClick", "popup();");
+                    hyplink.Target = "_blank";
+                    //PdfPathA.Controls.Add(hyplink);
+                    PDFPATH3 = MainDetailsLoad.Tables[0].Rows[0]["ABBCommentPath"].ToString(); ;
+                }
+
+                else
+                {
+                    //PdfPath.Text = "";
+                    HyperLink hyplink = new HyperLink();
+                    hyplink.ID = "PDFID3";
+                    hyplink.Text = "Pdf not Available";
+                    hyplink.NavigateUrl = "";
+                    // hyplink.Attributes.Add("onClick", "popup();");
+                    hyplink.Target = "_blank";
+                 //   PdfPath.Controls.Add(hyplink);
+                    PDFPATH3 = "";
+
+                }
+            }
+            catch
+            {
+                {
+                    //PdfPath.Text = "";
+                    HyperLink hyplink = new HyperLink();
+                    hyplink.ID = "PDFID3";
+                    hyplink.Text = "Pdf not Available";
+                    hyplink.NavigateUrl = "";
+                    // hyplink.Attributes.Add("onClick", "popup();");
+                    hyplink.Target = "_blank";
+                    //PdfPath.Controls.Add(hyplink);
+                    PDFPATH3 = "";
+                }
             }
         }
 
@@ -1748,7 +1948,7 @@ namespace Officer206Analyzer
                 lblMessage.ForeColor = System.Drawing.Color.Red;
                 lblMessage.Text = "Insert 206 Marks";
             }
-            
+
         }
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1756,20 +1956,33 @@ namespace Officer206Analyzer
         }
         protected void ddlDutyType_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
-        {
-            if (ddlDutyType.SelectedItem.Text == "Sea" && txtBranchOfApplicant.Text=="Executive")
+
             {
-                Label3.Visible = true;
-                DropDownList1.Visible = true;
-            }
-            else
-            {
-                Label3.Visible = false;
-                DropDownList1.Visible = false; 
-            
+                if (ddlDutyType.SelectedItem.Text == "Sea")// && txtBranchOfApplicant.Text == "Executive")
+                {
+                    Label3.Visible = true;
+                    DropDownList1.Visible = true;
+                }
+                else
+                {
+                    Label3.Visible = false;
+                    DropDownList1.Visible = false;
+
+                }
             }
         }
-        }
+
+       public string ABBComment { get; set; }
+
+       public string extension { get; set; }
+
+       public string ABBNHQComment { get; set; }
+
+       public string VNFComment { get; set; }
+
+       public string CofNComment { get; set; }
+
+
+
     }
 }

@@ -58,6 +58,7 @@ namespace Officer206Analyzer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtoffnoMain;
+        protected global::System.Web.UI.WebControls.TextBox txtremarks;
         
         /// <summary>
         /// Label58 control.
@@ -1057,6 +1058,10 @@ namespace Officer206Analyzer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload flpRep;
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadAAB;
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadAABNHQ;
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadVNF;
+          protected global::System.Web.UI.WebControls.FileUpload FileUploadCofN;
         
         /// <summary>
         /// chkConfirm control.

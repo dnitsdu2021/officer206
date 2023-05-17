@@ -20,7 +20,7 @@ namespace Officer206Analyzer
 {
     public partial class Register : System.Web.UI.Page
     {
-        string constr = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        string constr = ConfigurationManager.ConnectionStrings["ConnectionString1"].ConnectionString;
         SqlCommand com;
 
         SqlDataAdapter sqlda;
